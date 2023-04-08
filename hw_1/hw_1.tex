@@ -4,6 +4,7 @@
 \usepackage{amsmath}
 \usepackage{listings}
 \usepackage{graphicx}
+\usepackage{subcaption}
 
 
 
@@ -167,15 +168,57 @@ time exceeds 225 hours.
   \end{figure}
 
 
-
+\clearpage
 \section*{Question 5}
 
 \subsection*{a)}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{./hw_1/images/5_a.png}
+    \caption{Minitab output.}
+    \label{fig:4_a}
+\end{figure}
+There is not enough statistical evidence to support the hypothesis that $\mu_1 = \mu_2$.
 \subsection*{b)}
+P-value $= 0.991$
 \subsection*{c)}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{./hw_1/images/5_b.png}
+    \caption{Minitab output showing the confience interval.}
+    \label{fig:4_a}
+\end{figure}
+we can be 95\% confident that the true difference between the two population means is somewhere between 2.475 and 4.117.
+\clearpage
 \subsection*{d)}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=.7\textwidth]{./hw_1/images/5_c.png}
+    \caption{Minitab output showing the dot plot.}
+    \label{fig:4_a}
+\end{figure}
 \subsection*{e)}
 
+\begin{figure}[h]
+    \centering
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=1.25\textwidth]{./hw_1/images/5_d.png}
+        \caption{Minitab output showing the normaility of 95 Celcius.}
+      \label{fig:img1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=1.25\textwidth]{./hw_1/images/5_e.png}
+        \caption{Minitab output showing the the normaility of 95 Celcius.}
+      \label{fig:img2}
+    \end{subfigure}
+    \label{fig:both}
+  \end{figure}
+
+\paragraph{95} P-value = 0.161. There is not enough statistical evidence to reject the null hypothesis that the data comes from a normal distribution.
+\paragraph{100} P-value = 0.457. There is not enough statistical evidence to reject the null hypothesis that the data comes from a normal distribution.
+
+\clearpage
 \section*{Question 6}
 
 \subsection*{a)}
@@ -202,19 +245,23 @@ This confidence interval suggests that the true value of the difference
 in means is likely to be greater than -4.037613.
 \clearpage
 \subsection*{d)}
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.5\textwidth]{./hw_1/images/dot_1.png}
-    \caption{Dot plot of 10 second cool-down time.}
-    \label{fig:4_a}
-  \end{figure}
+
   \begin{figure}[h]
     \centering
-    \includegraphics[width=0.5\textwidth]{./hw_1/images/dot_2.png}
-    \caption{Dot plot of 20 second cool-down time.}
-    \label{fig:4_a}
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=1.25\textwidth]{./hw_1/images/dot_1.png}
+        \caption{Dot plot of 10 second cool-down time.}
+      \label{fig:img1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=1.25\textwidth]{./hw_1/images/dot_2.png}
+        \caption{Dot plot of 20 second cool-down time.}
+      \label{fig:img2}
+    \end{subfigure}
+    \label{fig:both}
   \end{figure}
-\clearpage
+
 \subsection*{e)}
 \begin{figure}[h]
     \centering
