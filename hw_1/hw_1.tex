@@ -178,6 +178,72 @@ time exceeds 225 hours.
 
 \section*{Question 6}
 
+\subsection*{a)}
+\begin{lstlisting}[language=R, caption=Calculating the P-value for a $t_0$ value, basicstyle=\small]
+    > t.test(x_1, y = x_2, var.equal = F, conf.level = 0.95,
+    +        alternative = "greater")
+    
+        Welch Two Sample t-test
+    
+    data:  x_1 and x_2
+    t = -5.5372, df = 38.097, p-value = 1
+    alternative hypothesis: true difference in means is greater than 0
+    95 percent confidence interval:
+     -4.037613       Inf
+    sample estimates:
+    mean of x mean of y 
+     3.285714  6.380952 
+    \end{lstlisting}
+    There is enough statistical evidence to support that the true difference in means is greater than 0.
+\subsection*{b)}
+P-value $= 0.9999988$.
+\subsection*{c)}
+This confidence interval suggests that the true value of the difference
+in means is likely to be greater than -4.037613.
+\clearpage
+\subsection*{d)}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{./hw_1/images/dot_1.png}
+    \caption{Dot plot of 10 second cool-down time.}
+    \label{fig:4_a}
+  \end{figure}
+  \begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{./hw_1/images/dot_2.png}
+    \caption{Dot plot of 20 second cool-down time.}
+    \label{fig:4_a}
+  \end{figure}
+\clearpage
+\subsection*{e)}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{./hw_1/images/norm_1.png}
+    \caption{Normal probability plot for 10 second cool-down time.}
+    \label{fig:4_a}
+  \end{figure}
+  \begin{lstlisting}[language=R, caption=Shapiro-Wilk normality test for 10 second cool-down time., basicstyle=\small]
+    > shapiro.test(x_1)
+
+	Shapiro-Wilk normality test
+
+    data:  x_1
+    W = 0.89888, p-value = 0.03329
+    \end{lstlisting}
+    The 10 second cool-down time has a p-value of 0.03329, which is less than the significance level of 0.05. Therefore, we reject the null hypothesis and conclude that the sample data is not normally distributed.
+  \begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{./hw_1/images/norm_2.png}
+    \caption{Normal probability plot for 20 second cool-down time.}
+    \label{fig:4_a}
+  \end{figure}
+  \begin{lstlisting}[language=R, caption=Shapiro-Wilk normality test for 20 second cool-down time., basicstyle=\small]
+	Shapiro-Wilk normality test
+
+    data:  x_2
+    W = 0.93279, p-value = 0.1565
+    \end{lstlisting}
+    The 20 second cool-down time has a p-value of 0.1565, which is greater than the significance level of 0.05. Therefore, we reject the alternative hypothesis and conclude that the sample data is normally distributed.
 \section*{Question 7}
 We can estimate the sample mean by observing the values at the $50^{th}$ percentile. This gives us:
 $\stackrel{\sim}{\mu}= 98.6$\\
