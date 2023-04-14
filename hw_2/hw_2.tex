@@ -143,7 +143,64 @@ We are 95\% confident that the true difference between the population means is b
 
 We can also note that the confidence interval contains 0, which is consistent with our hypothesis test.
 
+\clearpage
 \section*{Question 6}
+
+\subsection*{a)}
+\begin{lstlisting}[language=R, caption=R output of Shapiro-Wilk test on Birth Order: 1, basicstyle=\small]
+                Shapiro-Wilk normality test
+
+                data:  b1
+                W = 0.84597, p-value = 0.05201
+\end{lstlisting}
+
+Since the P-value $= 0.05201 > \alpha$ we can conclude the following.
+    The evidence of the data is consistent with the hypothesis that the data are drawn from a normal distribution.
+
+
+
+\begin{lstlisting}[language=R, caption=R output of Shapiro-Wilk test on Birth Order: 1, basicstyle=\small]
+                Shapiro-Wilk normality test
+
+                data:  b2
+                W = 0.92972, p-value = 0.4452
+\end{lstlisting}
+
+Since the P-value $= 0.4452 > \alpha$ we can conclude the following.
+    The evidence of the data is consistent with the hypothesis that the data are drawn from a normal distribution.
+
+
+\subsection*{b)}
+
+\begin{lstlisting}[language=R, caption=R output of a paired t test, basicstyle=\small]
+                Paired t-test
+
+                data:  b1 and b2
+                t = -0.36577, df = 9, p-value = 0.723
+                alternative hypothesis:
+                    true mean difference is not equal to 0
+                95 percent confidence interval:
+                    -0.3664148  0.2644148
+                sample estimates:
+                mean difference 
+                    -0.051 
+\end{lstlisting}
+
+The confidence intercal on the difference in mean score leads us to the following conclusion.
+We are 95\% confident that the true difference in the population means is between -0.36 and 0.26.
+Since the confidence interval contains 0, we can also conclude that the two sample means may be equal.
+
+\subsection*{c)}
+
+\begin{flushleft}
+  $H_0$: $\mu_1 = \mu_2$ \\
+  $H_a$: $\mu_1 \neq \mu_2$ \\
+\end{flushleft}
+
+Since the P-value $= 0.723 > \alpha$ we can conclude the following.
+There is enough statistical evidence to support the hypothesis that the sample means are equal,
+ie, $\mu_1 = \mu_2$.
+
 
 \section*{Question 7}
 
