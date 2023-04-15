@@ -293,12 +293,12 @@ is greater than the true population variance of Formulation 2 (original recipe).
 
 \clearpage
 \section*{Question 8}
-To derive the confidence interval for $a$ we can start with the fact that
-$\frac{\S_1^2 / \sigma_1^2}{S_2^2 / \sigma_2^2}$
+To derive the confidence interval for the ratio $\frac{\sigma_1^2}{\sigma_2^2}$ we can start with the fact that
+$\frac{S_1^2 / \sigma_1^2}{S_2^2 / \sigma_2^2}$
 has an $F$ distribution with $n_1 - 1$ numerator
 degrees of freedom and $n_2 - 1$ denominator degrees of freedom. This insight leads to:
 \begin{align*}
-1 - \alpha  & = P\left( F_{1 - \frac{\alpha}{2}, n_1 - 1, n_2 - 1} < \frac{\frac{S_1^2}{\sigma_1^2}}{\frac{S_2^2}{\sigma_2^2}} < F_{\frac{\alpha}{2}, n_1 - 1, n_2 - 1} \right) \\
+1 - \alpha  & = P\left( F_{1 - \frac{\alpha}{2}, n_1 - 1, n_2 - 1} < \frac{S_1^2 / \sigma_1^2}{S_2^2 / \sigma_2^2} < F_{\frac{\alpha}{2}, n_1 - 1, n_2 - 1} \right) \\
             & = P\left( F_{1 - \frac{\alpha}{2}, n_1 - 1, n_2 - 1} \cdot \frac{S_2^2}{\sigma_2^2} < \frac{S_1^2}{\sigma_1^2} < F_{\frac{\alpha}{2}, n_1 - 1, n_2 - 1} \cdot \frac{S_2^2}{\sigma_2^2} \right) \\
             & = P\left( \frac{S_1^2}{S_2^2} < \frac{\sigma_1^2}{\sigma_2^2} < \frac{F_{\frac{\alpha}{2}, n_1 - 1, n_2 - 1}}{F_{1 - \frac{\alpha}{2}, n_1 - 1, n_2 - 1}} \cdot \frac{S_1^2}{S_2^2} \right) \\
 \end{align*}
