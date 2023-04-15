@@ -64,6 +64,28 @@ Below is an example of a histogram that would produce a positively curved normal
 \clearpage
 \section*{Question 2}
 
+$H_0$: $\mu_1 - \mu_2 = 10$ \\
+$H_a$: $\mu_1 - \mu_2 > 10$ \\
+
+\begin{align*}
+  Z &= \frac{\bar{y}_1 - \bar{y}_2 - 10}{\sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}} \\
+    &= \frac{162.5 - 155 - 10}{\sqrt{\frac{1^2}{10} + \frac{1^2}{12}}} \\
+    &= -5.838
+\end{align*}
+
+By observing that $Z_{\alpha} = 3.09$ we can conclude the following.
+There is not enough statistical evidence to support the hypothesis that $\mu_1 - \mu_2 = 10$,
+ie, the breaking strength of plastic 1 exceeds that of plastic 2 by at least 10 psi.
+Therefore, based on the sample information, they should not use plastic 1.
+
+\begin{align*}
+  100(1-\alpha) \text{ C.I} = \bar{y}_1 - \bar{y}_2&\pm Z_{\alpha/2} \sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}} \\
+  7.5                       &\pm 3.29 \sqrt{\frac{1^2}{10} + \frac{1^2}{12}} \\
+  7.5                       &\pm 1.40
+\end{align*}
+
+We are 99\% confident that the true value of $\mu_1 - \mu_2$ is between 6.1 and 8.9.
+This is consistent with our above test which conlucded that the difference was not greater than 10.
 \section*{Question 3}
 
 \subsection*{a)}
