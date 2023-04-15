@@ -86,6 +86,7 @@ Therefore, based on the sample information, they should not use plastic 1.
 
 We are 99\% confident that the true value of $\mu_1 - \mu_2$ is between 6.1 and 8.9.
 This is consistent with our above test which conlucded that the difference was not greater than 10.
+\clearpage
 \section*{Question 3}
 
 \subsection*{a)}
@@ -107,7 +108,9 @@ This is consistent with our above test which conlucded that the difference was n
   \end{figure}
   Since the P-value $= 0.962 > \alpha$ we can conclude the following.
   There is enough statistical evidence to support the hypothesis that the two means are equal.
-\subsection*{c)}
+
+  \clearpage
+  \subsection*{c)}
 
 \begin{figure}[h]
     \centering
@@ -135,8 +138,43 @@ This is consistent with our above test which conlucded that the difference was n
 \paragraph{Type 2} Similarly, since the P-value $= 0.876 > \alpha$ we can conclude the following.
     The evidence of the data is consistent with the hypothesis that the data are drawn from a normal distribution.
 
-
+\clearpage
 \section*{Question 4}
+\subsection*{a)}
+The hypothesis to test whether insulation has reduced the average energy consumption is: \\
+$H_0$: $\delta = 0$ \\
+$H_a$: $\delta > 0$ \\
+This will be a right-tailed paired t-test at $\alpha = 0.1$.
+\begin{equation*}
+  \begin{array}{c|c}
+      \text{Sample Mean of differences} & \bar{d} = 0.54 \\
+      \text{Sample Standard Deviation of differences} & S_d = 1.01566\\
+      \text{Sample Size} & n = 10 \\
+  \end{array}
+\end{equation*}\\
+The test statistic $t$ is:
+\begin{align*}
+  t = & \frac{\bar{d}}{S_d/\sqrt{n}} \\
+    = & \frac{0.54}{1.01566/\sqrt{10}} \\
+    = & 1.681 \\
+\end{align*}
+The critical region begins at:
+\begin{equation*}
+t_{\alpha , n-1} = t_{.1,9} = 1.383
+\end{equation*}\\
+
+Since $t = 1.681 > t_{.1,9} = 1.383$,
+that is, the test statistic is in the right-tailed critical region we can conclude the following.
+There is enough statistical evidence to support the hypothesis that $\delta > 0$, ie,
+the mean energy consumption after insulation is less than the mean eneergy consumption before insulation.
+
+\subsection*{b)}
+
+\paragraph{1.} One factor that could have affected the results is the mean difference in temperature between the two winters.
+If one winter was significantly colder than another it could have affected the data that was collected.
+
+\paragraph{2.} Another factor that could have affected the result is that other electronic appliances could have significantly affected the energy consumption.
+If there was a significant difference in the energy consumption of other appliances between the two winters it could have affected the results.
 
 \clearpage
 \section*{Question 5}
@@ -226,6 +264,45 @@ ie, $\mu_1 = \mu_2$.
 
 \section*{Question 7}
 
-\section*{Question 8}
+To test the hypothesis that the true
+population variance of Formulation 1 (new recipe),
+is greater than the true population variance of Formulation 2 (original recipe)
+, we will use the following hypothesis: \\
+$H_0$: $\sigma_1^2 = \sigma_2^2$ \\
+$H_a$: $\sigma_1^2 > \sigma_2^2$ \\
 
+This will be a right tailed test of two variances at $\alpha = 0.05$.
+The test statistic for the test is:
+\begin{align*}
+  F = & \frac{S_1^2}{S_2^2} \\
+    = & \frac{0.100}{0.061} \\
+    = & 1.639 \\
+\end{align*}
+The critical region begins at:
+\begin{equation*}
+F_{\alpha , n_2-1, n_1-1},  = F_{.05 , 9, 9} = 3.18
+\end{equation*}\\
+
+Since $ F = 1.639 <  F_{.05 , 9, 9} = 3.18$, the test statistic is not in the right-tailed critical region
+we can conclude the following.
+There is enough statistical evidence to support the hypothesis that $\sigma_1^2 > \sigma_2^2$, ie,
+the true
+population variance of Formulation 1 (new recipe),
+is greater than the true population variance of Formulation 2 (original recipe).
+
+\clearpage
+\section*{Question 8}
+To derive the confidence interval for $a$ we can start with the fact that
+$\frac{\S_1^2 / \sigma_1^2}{S_2^2 / \sigma_2^2}$
+has an $F$ distribution with $n_1 - 1$ numerator
+degrees of freedom and $n_2 - 1$ denominator degrees of freedom. This insight leads to:
+\begin{align*}
+1 - \alpha  & = P\left( F_{1 - \frac{\alpha}{2}, n_1 - 1, n_2 - 1} < \frac{\frac{S_1^2}{\sigma_1^2}}{\frac{S_2^2}{\sigma_2^2}} < F_{\frac{\alpha}{2}, n_1 - 1, n_2 - 1} \right) \\
+            & = P\left( F_{1 - \frac{\alpha}{2}, n_1 - 1, n_2 - 1} \cdot \frac{S_2^2}{\sigma_2^2} < \frac{S_1^2}{\sigma_1^2} < F_{\frac{\alpha}{2}, n_1 - 1, n_2 - 1} \cdot \frac{S_2^2}{\sigma_2^2} \right) \\
+            & = P\left( \frac{S_1^2}{S_2^2} < \frac{\sigma_1^2}{\sigma_2^2} < \frac{F_{\frac{\alpha}{2}, n_1 - 1, n_2 - 1}}{F_{1 - \frac{\alpha}{2}, n_1 - 1, n_2 - 1}} \cdot \frac{S_1^2}{S_2^2} \right) \\
+\end{align*}
+Therefore the $100(1-\alpha)$ confidence interval for the ratio of variances is given by:
+\begin{equation*}
+  \frac{\sigma_1^2}{\sigma_2^2} \in \left( \frac{S_1^2}{S_2^2} \cdot \frac{1}{F_{\frac{\alpha}{2}, n_1 - 1, n_2 - 1}}, \frac{S_1^2}{S_2^2} \cdot \frac{1}{F_{1 - \frac{\alpha}{2}, n_1 - 1, n_2 - 1}} \right)
+  \end{equation*}\\
 \end{document}
