@@ -16,3 +16,8 @@ means <- aggregate(Life ~ Brand, data = data, mean)
 # Print the result
 means
 
+# Calculate t-value of t_{0.025,12}
+t_value <- qt(0.025, df = 12, lower.tail = FALSE)
+
+# Print the result
+t_value
