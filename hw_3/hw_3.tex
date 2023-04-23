@@ -119,10 +119,45 @@ and the hypothesis test is valid.
 \clearpage
 \section*{Question 4}
 \subsection*{a)}
+$H_0$: All means are equal. \\
+$H_a$: Not all means are equal. \\
+Performing an F test at we can see that the P-value $ = .052 > \alpha = .05$, therefore we can conclude the following.
+The evidence from the data is consistent with the hypothesis that all means are equal.
+
 \subsection*{b)}
+Given that the F test concluded that all means are equal, It should not matter what fluid is selected given that the objective is long life.
+That being said, if forced to choose, I would pick fluid 3, as it had the highest sample mean at $\bar{y}_{3 \cdot} = 20.95$.
 \subsection*{c)}
+\begin{figure}[h]
+    \centering
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=1.25\textwidth]{./images/4_c_1.png}
+        \caption{Minitab output showing normal probability plot.}
+      \label{fig:img1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=1.25\textwidth]{./images/4_c_2.png}
+        \caption{Minitab output showing the residuals vs fitted value.}
+      \label{fig:img2}
+    \end{subfigure}
+    \label{fig:both}
+\end{figure}
+
+\begin{flushleft}
+$H_0$: The data are drawn from a normal disribution. \\
+$H_a$: The data are not drawn from a normal disribution. \\
+\end{flushleft}
+Performing an Anderson Darling normality test at $\alpha = 0.05$ on the residuals gives a P-value of 0.526.
+Since the P-value is larger than $\alpha$, we can conclude the following. 
+The evidence of the data is consistent with the data being drawn from a normal disribution.
+
+Observing the residuals shows no indication of heteroskedasticity. This, along with the normality test indicates that the
+basic analysis of variance assumptions are satisfied.
 \subsection*{d)}
+% TODO
 \subsection*{e)}
+% TODO
 
 \clearpage
 \section*{Question 5}
@@ -136,5 +171,57 @@ and the hypothesis test is valid.
 
 \clearpage
 \section*{Question 7}
+\subsection*{a)}
+\begin{lstlisting}[language=R, 
+    basicstyle=\ttfamily\small,
+    numbers=none, 
+    frame=single, 
+    caption=R output of the summary of the aov function,
+    label=code:cut-rod,
+    escapeinside={(*}{*)}]
+                Df Sum Sq Mean Sq F value Pr(>F)
+    Brand        1   67.6    67.6   0.668  0.429
+    Residuals   13 1315.7   101.2 
+\end{lstlisting}
+\begin{flushleft}
+$H_0$: All means are equal. \\
+$H_a$: Not all means are equal. \\
+\end{flushleft}
+Performing an F test at we can see that the P-value $ = 0.429 > \alpha = .05$, therefore we can conclude the following.
+The evidence from the data is consistent with the hypothesis that all means are equal.
+\subsection*{b)}
+\begin{figure}[h]
+    \centering
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=1.25\textwidth]{./images/7_b_1.png}
+        \caption{R output showing the residuals.}
+      \label{fig:img1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=1.25\textwidth]{./images/7_b_2.png}
+        \caption{R output showing the normal probability plot.}
+      \label{fig:img2}
+    \end{subfigure}
+    \label{fig:both}
+\end{figure}
+
+\clearpage
+\subsection*{c)}
+In order to construct a 95 percent confidence interval estimate on
+the mean life of battery brand 2. The following equation can be used. \\
+\begin{equation*}
+    \sum_{i=1}^{a} c_i \bar{y}_{i \cdot} - t_{\alpha/2, N-a} \sqrt{\frac{MSE}{n} \sum_{i=1}^{a} c_i^2}
+    \leq \sum_{i=1}^{a} c_i \mu_i \leq
+    \sum_{i=1}^{a} c_i \bar{y}_{i \cdot} + t_{\alpha/2, N-a} \sqrt{\frac{MSE}{n} \sum_{i=1}^{a} c_i^2}
+\end{equation*}
+\begin{flushleft}
+The contrast of intrest, where $c_1 = 0, c_2 = 1, c_3 = 0$, and $a = 3$ is:
+\end{flushleft}
+\begin{align*}
+    \Gamma &= \sum_{i=1}^{a} c_i \mu_i \\
+                &= 0(95.2) + 1(79.4) + 0(100.4) \\
+                &= 79.4 
+    \end{align*}
 
 \end{document}

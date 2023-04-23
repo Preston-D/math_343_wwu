@@ -1,0 +1,18 @@
+# Load the data
+data <- read.table(file.choose(), sep="\t", header=TRUE)
+
+# Fit the ANOVA model
+model <- aov(Life ~ Brand, data = data)
+
+# Print the ANOVA table
+summary(model)
+
+# Show plots
+plot(model)
+
+# Calculate sample mean for each treatment
+means <- aggregate(Life ~ Brand, data = data, mean)
+
+# Print the result
+means
+
