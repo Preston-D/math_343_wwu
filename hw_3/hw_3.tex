@@ -155,9 +155,75 @@ The evidence of the data is consistent with the data being drawn from a normal d
 Observing the residuals shows no indication of heteroskedasticity. This, along with the normality test indicates that the
 basic analysis of variance assumptions are satisfied.
 \subsection*{d)}
-% TODO
+In order to test whether the average of the mean life of the two fluid types 1 and 3 is greater than the
+mean life of fluid type 4. We set up the following right-tailed test at $\alpha = 0.05$.
+\begin{flushleft}
+  $H_0$: $\frac{1}{2}(\mu_1 + \mu_3) - \mu_4 = 0$ \\
+  $H_a$: $\frac{1}{2}(\mu_1 + \mu_3) - \mu_4 > 0$ \\
+\end{flushleft}
+The contrast of intrest, where $c_1 = \frac{1}{2}, c_2 = 0, c_3 = \frac{1}{2}, c_4 = -1$, and $a = 4$ is:
+\begin{align*}
+    \hat{\Gamma} &=  \sum_{i=1}^{a} c_i \bar{y}_{i \cdot} \\
+                &= \frac{1}{2}(18.65) + 0(17.95) + \frac{1}{2}(20.95) - (18.817) \\
+                &= 0.983 
+\end{align*}
+Noting that $MSE = 3.3$, and $n = 6$ the test statistic is:
+\begin{align*}
+  t &=  \frac{\sum_{i=1}^{a} c_i \bar{y}_{i \cdot}}{\sqrt{\frac{MSE}{n} \cdot \sum_{i=1}^{a} c_i^2}} \\
+              &= \frac{0.983}{\sqrt{\frac{3.3}{6} \cdot 1.5}} \\
+              &= 1.032
+\end{align*}
+Since $t_{\alpha,N-a} = t_{.05,24-4} = 1.725$ the test is not in the right-tailed critical region, thus we can conclude the following.
+There is not enough statistical evidence to support the hypothesis that the average of the mean life of the two fluid types 1 and 3 is greater than the
+mean life of fluid type 4.
+
 \subsection*{e)}
-% TODO
+Bonferroni's method to do a pairwise comparison at $FWE\alpha = 0.05$ is as follows.
+Note that there are $k = \binom{4}{2} = 6$ pairs, and the significance level is $\frac{\alpha}{k} = \frac{.05}{6} = 0.008\bar{3}$.
+The test statistic, where $MSE = 3.3$, $n_i = n_j = 6$, and $N - a = 24 - 4 = 20$, is:
+\begin{align*}
+  t_{\alpha/2k , N-a} \sqrt{MSE(\frac{1}{n_i} + \frac{1}{n_j})}&=  t_{0.00069,20} \sqrt{3.3(\frac{1}{6} + \frac{1}{6})} \\
+              &= 4.008 \sqrt{3.3(\frac{1}{6} + \frac{1}{6})} \\
+              &= 4.203
+\end{align*}
+The differences, where
+$\bar{y}_{1 \cdot} = 18.65$, $\bar{y}_{2 \cdot} = 17.95$, $\bar{y}_{3 \cdot} = 20.95$, and $\bar{y}_{4 \cdot} = 18.817$, are:
+\begin{equation*}
+  \begin{array}{c|c|c}
+    \text{Difference} & \left|  \text{Difference} \right| & \text{Significantly Different?} \\
+      \hline
+      \bar{y}_{1 \cdot} - \bar{y}_{2 \cdot} & 0.700 & \text{No} \\
+      \bar{y}_{1 \cdot} - \bar{y}_{3 \cdot} & 2.300 & \text{No} \\
+      \bar{y}_{1 \cdot} - \bar{y}_{4 \cdot} & 0.167 & \text{No} \\
+      \bar{y}_{2 \cdot} - \bar{y}_{3 \cdot} & 3.000 & \text{No} \\
+      \bar{y}_{2 \cdot} - \bar{y}_{4 \cdot} & 0.867 & \text{No} \\
+      \bar{y}_{3 \cdot} - \bar{y}_{4 \cdot} & 2.153 & \text{No} \\
+
+  \end{array}
+\end{equation*}\\
+Therefore the graphical for Bonferroni's method to do a pairwise comparison are: \\
+\vspace{12pt}
+\\
+\begin{tikzpicture}[yscale=-1]
+    % Define the positions of the labels
+    \coordinate (labelPos) at (0, 0);
+    \coordinate (2Pos) at (3, 0);
+    \coordinate (1Pos) at (5, 0);
+    \coordinate (4Pos) at (7, 0);
+    \coordinate (3Pos) at (9, 0);
+
+    % Draw the labels
+    \node at (labelPos) {\textbf{Fluid Type}}; % Treatment label
+    \node at (2Pos) {\textbf{(2)}};
+    \node at (1Pos) {\textbf{(1)}};
+    \node at (4Pos) {\textbf{(4)}};
+    \node at (3Pos) {\textbf{(3)}};
+
+    % Draw the line
+    \draw[ultra thick] ([yshift=0.5cm]2Pos) -- ([yshift=0.5cm]3Pos);
+    % \draw[thick] ([yshift=1cm]1Pos) -- ([yshift=1cm]2Pos); % another theoretical line.
+\end{tikzpicture}
+
 
 \clearpage
 \section*{Question 5}
