@@ -162,16 +162,6 @@ basic analysis of variance assumptions are satisfied.
 \clearpage
 \section*{Question 5}
 \subsection*{a)}
-\subsection*{b)}
-\subsection*{c)}
-\subsection*{d)}
-
-\clearpage
-\section*{Question 6}
-
-\clearpage
-\section*{Question 7}
-\subsection*{a)}
 \begin{lstlisting}[language=R, 
     basicstyle=\ttfamily\small,
     numbers=none, 
@@ -208,6 +198,8 @@ The evidence from the data is consistent with the hypothesis that all means are 
 
 \clearpage
 \subsection*{c)}
+\subsubsection*{95 percent confidence interval estimate on
+the mean life of battery brand 2.}
 In order to construct a 95 percent confidence interval estimate on
 the mean life of battery brand 2. The following equation can be used. \\
 \begin{equation*}
@@ -223,5 +215,73 @@ The contrast of intrest, where $c_1 = 0, c_2 = 1, c_3 = 0$, and $a = 3$ is:
                 &= 0(95.2) + 1(79.4) + 0(100.4) \\
                 &= 79.4 
     \end{align*}
+\begin{flushleft}
+  Using R, the following values were obtained. $MSE = 1315.7$, and $t_{\alpha/2,N-a} = t_{0.025,12} = 2.178$.
+  Thus, the 95 percent confidence interval estimate on
+  the mean life of battery brand 2 is:
+\end{flushleft}
+\begin{align*}
+  79.4 - 2.178 \sqrt{\frac{1315.7}{5} \cdot 1}
+  &\leq \sum_{i=1}^{a} c_i \mu_i \leq
+  79.4 + 2.178 \sqrt{\frac{1315.7}{5} \cdot 1} \\
+  44.06
+  &\leq \sum_{i=1}^{a} c_i \mu_i \leq
+  114.73 \\
+\end{align*}
+
+\subsubsection*{99 percent confidence interval estimate on the mean difference between the lives of battery brands 2 and 3.}
+The contrast of intrest, where $c_1 = 0, c_2 = 1, c_3 = -1$, and $a = 3$ is:
+\begin{align*}
+    \Gamma &=  \sum_{i=1}^{a} c_i \bar{y}_{i \cdot} \\
+                &= 0(95.2) + 1(79.4) + -1(100.4) \\
+                &= -21 
+    \end{align*}
+\begin{flushleft}
+    Using R, the following values were obtained. $t_{\alpha/2,N-a} = t_{0.005,12} = 3.054$.
+    Thus, the 99 percent confidence interval estimate on the mean difference between the lives of battery brands 2 and 3 is:
+\end{flushleft}
+\begin{align*}
+    -21 - 3.054 \sqrt{\frac{1315.7}{5} \cdot 2}
+    &\leq \sum_{i=1}^{a} c_i \mu_i \leq
+    -21 + 3.054 \sqrt{\frac{1315.7}{5} \cdot 2} \\
+    -91.06
+    &\leq \sum_{i=1}^{a} c_i \mu_i \leq
+    49.06 \\
+\end{align*}
+\subsection*{d)}
+The percentage of batteries expected to fail before 85 weeks can be obtained in R using the following code.
+\begin{lstlisting}[language=R, caption=, basicstyle=\small]
+
+\end{lstlisting}
+\begin{lstlisting}[language=R, 
+  basicstyle=\ttfamily\small,
+  numbers=none, 
+  frame=single, 
+  caption=Calculating the percentage of batteries expected to fail before 85 weeks.,
+  label=code:cut-rod,
+  escapeinside={(*}{*)}]
+  # Calculate percentage of batteries expected to fail
+  percentage <- pnorm(85, mean = 100.4, sd = 36.27) * 100
+  
+  # Print the result
+  percentage
+\end{lstlisting}
+\begin{lstlisting}[language=R, 
+  basicstyle=\ttfamily\small,
+  numbers=none, 
+  frame=single, 
+  caption=Code output.,
+  label=code:cut-rod,
+  escapeinside={(*}{*)}]
+  33.5566
+\end{lstlisting}
+
+
+\clearpage
+\section*{Question 6}
+
+\clearpage
+\section*{Question 7}
+
 
 \end{document}
