@@ -21,3 +21,6 @@ t_value <- qt(0.025, df = 12, lower.tail = FALSE)
 
 # Print the result
 t_value
+
+# Bartletts test
+bartlett.test(Life ~ Fluid.Type, data = data)

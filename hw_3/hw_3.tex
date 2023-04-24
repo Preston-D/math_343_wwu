@@ -28,9 +28,27 @@
 
 \section*{Question 1}
 \subsection*{a)}
+The sample mean of $\mu_2$ can be estimated by $\hat{\mu}_2 = \bar{y}_{2 \cdot} = 5753.3$.
 \subsection*{b)}
+The grand sample mean, $\mu$, can be estimated by:
+\begin{align*}
+  \hat{\mu} = \bar{y}_{\cdot \cdot} & = \frac{5635.3+5753.3+4527.3+3442.3}{4} \\
+  & = 4839.55
+\end{align*}
 \subsection*{c)}
+The treatment effect $\tau_3$ can be estimated by:
+\begin{align*}
+  \hat{\tau}_3 & = \hat{\mu}_i - \hat{\mu} \\
+  & = 4527.3 - 4839.55 \\
+  & = -312.25
+\end{align*}
 \subsection*{d)}
+An estimate of the common population variance, $\sigma^2$, is:
+\begin{align*}
+  \hat{\sigma}^2 & = \frac{(5-1)509.6 + (5-1)432.3 + (5-1)356.4 + (5-1)505.5}
+  {(5-1)+(5-1)+(5-1)+(5-1)} \\
+  & = 1815.8 
+\end{align*}
 \subsection*{e)}
 \subsection*{f)}
 
@@ -61,7 +79,7 @@ This is consistent with the above hypothesis test.
 It looks as though the mean for treatment 1 and treatment 3 could be similar, in a pairwise comparison.
 \subsection*{c)}
 The results of the Fisher's LSD test can be summarized in the graphical results below.
-Note that a line under the treatments indicate that they are not significantly different. \\
+Note that a line under the treatments indicates that they are not significantly different. \\
 \vspace{12pt}
 \\
 \begin{tikzpicture}[yscale=-1]
@@ -115,6 +133,40 @@ and the hypothesis test is valid.
 \clearpage
 \section*{Question 3}
 \subsection*{a)}
+Tukeys's test at $FWE\alpha = 0.05$ is as follows.
+Note that there are $k = \binom{4}{2} = 6$ pairs, and the significance level is $\frac{\alpha}{k} = \frac{.05}{6} = 0.008\bar{3}$.
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=1\textwidth]{./images/3.png}
+  \caption{The output of the One-way ANOVA: Tensile Strength versus Technique at $\alpha = 0.0083$ from Minitab.}
+  \label{fig:2_a}
+\end{figure}
+
+The graphical results are: \\
+\vspace{12pt}
+\\
+\begin{tikzpicture}[yscale=-1]
+    % Define the positions of the labels
+    \coordinate (labelPos) at (0, 0);
+    \coordinate (4Pos) at (3, 0);
+    \coordinate (3Pos) at (5, 0);
+    \coordinate (1Pos) at (7, 0);
+    \coordinate (2Pos) at (9, 0);
+
+    % Draw the labels
+    \node at (labelPos) {\textbf{Mixing Technique}}; % Treatment label
+    \node at (4Pos) {\textbf{(4)}};
+    \node at (3Pos) {\textbf{(3)}};
+    \node at (1Pos) {\textbf{(1)}};
+    \node at (2Pos) {\textbf{(2)}};
+
+    % Draw the line
+    \draw[ultra thick] ([yshift=0.5cm]3Pos) -- ([yshift=0.5cm]2Pos);
+    % \draw[thick] ([yshift=1cm]1Pos) -- ([yshift=1cm]2Pos); % another theoretical line.
+\end{tikzpicture}
+
+These results are different from The Fisher LSD method as they indicate that technique 1, 2, and 3 are not not significantly different.
+
 
 \clearpage
 \section*{Question 4}
@@ -316,9 +368,6 @@ The contrast of intrest, where $c_1 = 0, c_2 = 1, c_3 = -1$, and $a = 3$ is:
 \end{align*}
 \subsection*{d)}
 The percentage of batteries expected to fail before 85 weeks can be obtained in R using the following code.
-\begin{lstlisting}[language=R, caption=, basicstyle=\small]
-
-\end{lstlisting}
 \begin{lstlisting}[language=R, 
   basicstyle=\ttfamily\small,
   numbers=none, 
@@ -345,9 +394,41 @@ The percentage of batteries expected to fail before 85 weeks can be obtained in 
 
 \clearpage
 \section*{Question 6}
+\begin{flushleft}
+  $H_0$: $\sigma_1^2 = \sigma_2^2 = \sigma_3^2 = \sigma_4^2$. \\
+  $H_a$: At least one $\sigma_i^2$ is different. \\
+  \end{flushleft}
+\begin{lstlisting}[language=R, 
+  basicstyle=\ttfamily\small,
+  numbers=none, 
+  frame=single, 
+  caption=R output of the bartlett test.,
+  label=code:cut-rod,
+  escapeinside={(*}{*)}]
+	      Bartlett test of homogeneity of variances
 
-\clearpage
+  data:  Life by Fluid.Type
+  Bartletts K-squared = 0.26691, df = 3,
+  p-value = 0.9661
+\end{lstlisting}
+Since the P-value is large (0.9661), we fail to reject $H_0$, and can conclude the following.
+There is not enough statistical evidence to support the hypotheis that at least one $\sigma_i^2$ is different.
+
+This is the same conclusion met when observing the residual plot regarding equality of variances in question 4.
+
 \section*{Question 7}
+\begin{flushleft}
+  $H_0$: $\sigma_1^2 = \sigma_2^2 = \sigma_3^2$. \\
+  $H_a$: At least one $\sigma_i^2$ is different. \\
+  \end{flushleft}
+  \begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{./images/7.png}
+    \caption{The output of the Test for Equal Variances: Life versus Brand from Minitab.}
+    \label{fig:7}
+\end{figure}
+Since the P-value is large (0.933), we fail to reject $H_0$, and can conclude the following.
+There is not enough statistical evidence to support the hypotheis that at least one $\sigma_i^2$ is different.
 
-
+This is the same conclusion met when observing the residual plot regarding equality of variances in question 5.
 \end{document}
