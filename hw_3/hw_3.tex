@@ -45,13 +45,38 @@ The treatment effect $\tau_3$ can be estimated by:
 \subsection*{d)}
 An estimate of the common population variance, $\sigma^2$, is:
 \begin{align*}
-  \hat{\sigma}^2 & = \frac{(5-1)509.6 + (5-1)432.3 + (5-1)356.4 + (5-1)505.5}
+  \hat{\sigma}^2 & = \frac{(5-1)509.6^2 + (5-1)432.3^2 + (5-1)356.4^2 + (5-1)505.5^2}
   {(5-1)+(5-1)+(5-1)+(5-1)} \\
-  & = 1815.8 
+  & = 207281.665 
 \end{align*}
 \subsection*{e)}
+  % By noting that $207281.665 = \frac{SSE}{(N-a)}$ Where $N-a = 20-4 = 16$ we can solve for $SSE = 3316506.64$.
+  By noting that $\hat{\sigma}^2$ can be used as MSE,
+  a 90\% confidence interval for $\mu_4$ is given by:
+  \begin{align*}
+    \bar{y}_{4 \cdot} - t_{\alpha / 2, N-a} \sqrt{\frac{MSE}{n}} &\leq
+    \mu_4 \leq \bar{y}_{4 \cdot} + t_{\alpha / 2, N-a} \sqrt{\frac{MSE}{n}} \\
+    3442.3 - t_{.05, 16} \sqrt{\frac{207281.665}{5}} &\leq
+    \mu_4 \leq 3442.3 + t_{.05 , 16} \sqrt{\frac{207281.665}{5}} \\
+    3442.3 - 1.746 \cdot 203.6082832 &\leq
+    \mu_4 \leq 3442.3 + 1.746 \cdot 203.6082832 \\
+    3086.799938 &\leq
+    \mu_4 \leq 3797.800062 \\
+  \end{align*}
+  Therefore, were are 90\% confident that the true mean of concrete formula 4 is between 3086.79 and 3797.80.
 \subsection*{f)}
-
+A 95\% confidence interval for $\mu_1 - \mu_3$ is given by:
+\begin{align*}
+  \bar{y}_{1 \cdot} - \bar{y}_{3 \cdot} - t_{\alpha / 2, N-a} \sqrt{\frac{2 \cdot MSE}{n}} &\leq
+  \mu_1 - \mu_3 \leq \bar{y}_{1 \cdot} - \bar{y}_{3 \cdot} + t_{\alpha / 2, N-a} \sqrt{\frac{2 \cdot MSE}{n}} \\
+  5635.3 - 4527.3 - t_{.025, 16} \sqrt{\frac{2 \cdot 207281.665}{5}} &\leq
+  \mu_1 - \mu_3 \leq 5635.3 - 4527.3 + t_{.025, 16} \sqrt{\frac{2 \cdot 207281.665}{5}} \\
+  1108 - 2.120 \cdot 287.9455956 &\leq
+  \mu_1 - \mu_3 \leq 1108 + 2.120 \cdot 287.9455956 \\
+  497.5553373 &\leq
+  \mu_1 - \mu_3 \leq 1718.444663 \\
+\end{align*}
+Therefore, were are 95\% confident that the true difference in means of concrete formula 1 and concrete formula 3 is between 497.55 and 1718.44.
 \clearpage
 \section*{Question 2}
 
@@ -163,7 +188,7 @@ The graphical results are: \\
     % Draw the line
     \draw[ultra thick] ([yshift=0.5cm]3Pos) -- ([yshift=0.5cm]2Pos);
     % \draw[thick] ([yshift=1cm]1Pos) -- ([yshift=1cm]2Pos); % another theoretical line.
-\end{tikzpicture}
+\end{tikzpicture} \\
 
 These results are different from The Fisher LSD method as they indicate that technique 1, 2, and 3 are not not significantly different.
 
