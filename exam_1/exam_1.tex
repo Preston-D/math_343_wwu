@@ -7,7 +7,7 @@
 \usepackage{subcaption}
 \usepackage{multicol}
 \usepackage{pgfplots}
-\usepackage[margin=0.25in]{geometry}
+\usepackage[margin=0.5in]{geometry}
 
 
 
@@ -15,15 +15,15 @@
 \section*{2-sample t-test}
 \hrule width 10cm
 \vspace{6pt}
-$\bar{y} = \frac{1}{n} \sum_{i=1}^{n} y_i$ Estimates the population mean $\mu$. $S^2 = \frac{1}{n-1}\sum_{i=1}^{n} (y_i - \bar{y})^2$ Estimates the variance $\sigma^2$. \\
+$\bar{y} = \frac{1}{n} \sum_{i=1}^{n} y_i$ Estimates the population mean $\mu$. $S^2 = \frac{1}{n-1}\sum_{i=1}^{n} (y_i - \bar{y})^2$ Estimates the variance $\sigma^2$. 
 The Hypothesis test is:     $H_0$: $\mu_1 = \mu_2$; $H_a$: $\mu_1 \neq \mu_2$, or $<$ (left-tailed) or $>$ (right-tailed).
-\paragraph{Known Variances} use the $z$ test; $Z = (\bar{y}_1 - \bar{y}_2) / \sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}$ (two population means), or $Z = (\bar{y} - \mu_0) / \frac{\sigma}{\sqrt{n}}$ (one). \\
+\paragraph{Known Variances} use the $z$ test; $Z = (\bar{y}_1 - \bar{y}_2) / \sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}$ (two population means), or $Z = (\bar{y} - \mu_0) / \frac{\sigma}{\sqrt{n}}$ (one). 
 $100(1-\alpha\%)$ C.I. for $\mu_1 - \mu_2$: $(\bar{y}_1 - \bar{y}_2) \pm Z_{\alpha/2}\sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}$. 
 C.R. where $H_a$: $\neq \implies Z_{\alpha / 2}$. $< \implies -Z_{\alpha}$. $> \implies Z_{\alpha}$  
 \paragraph{Unknown Variances ($\sigma_1^2 = \sigma_2^2$)} $t = (\bar{y}_1 - \bar{y}_2) / S_p \sqrt{\frac{1}{n_1} + \frac{1}{n_2}}$, $d.f = v = n_1 + n_2 - 2$. $S_p^2 = \frac{(n_1 - 1)S_1^2 + (n_2 - 1)S_2^2}{n_1 + n_2 - 2}$ ($S_p = \sqrt{S_p^2}$)
 $100(1-\alpha)\%$ C.I. for $\mu_1 - \mu_2$: $(\bar{y}_1 - \bar{y}_2) \pm t_{\alpha/2, v}S_p \sqrt{\frac{1}{n_1} + \frac{1}{n_2}}$ (two means), or $\bar{y} \pm t_{\alpha,n-1}\frac{\sigma}{\sqrt{n}}$ (one mean).
 \paragraph{Unknown Variances ($\sigma_1^2 \neq \sigma_2^2$)} $t = (\bar{y}_1 - \bar{y}_2) / \sqrt{\frac{S_1^2}{n_1} + \frac{S_2^2}{n_2}}$, $d.f = v = \frac{((S_1^2/n_1) + (S_2^2/n_2))^2}{\frac{(S_1^2/n_1)^2}{n_1 - 1} + \frac{(S_2^2/n_2)^2}{n_2 - 1}}$. (round down $v$ to nearest int.) \\
-C.R. where $H_a$: $\neq \implies t_{\alpha / 2, v}$. $< \implies -t_{\alpha, v}$. $> \implies t_{\alpha, v}$ 
+C.R. where $H_a$: $\neq \implies t_{\alpha / 2, v}$. $H_a$: $< \implies -t_{\alpha, v}$. $H_a$: $> \implies t_{\alpha, v}$ 
 \paragraph{Tests on Variances}
 The Hypothesis test is:     $H_0$: $\sigma_1^2 = \sigma_2^2$; $H_a$: $\sigma_1^2 \neq \sigma_2^2$, or $<$ (left-tailed) or $>$ (right-tailed).\\
 \textbf{two-tailed($\neq$):} $F = \frac{S_1^2}{S_2^2} > F_{\alpha/2, n_1 - 1, n_2 - 1}$, 
@@ -41,8 +41,8 @@ And $S_d^2 = \frac{1}{n-1} \sum_{j=1}^{n}(d_j - \bar{d})^2$. (note: use $S_d = \
 \section*{ANOVA}
 \hrule width 10cm
 \vspace{6pt}
-The overall mean $\mu$ is $\frac{1}{a} \sum_{i=1}^{a} \mu_i$. Note that $\sum_{i=1}^{a}\tau_i = 0$. 
-\paragraph{LS estimates: } $\hat{\mu} = \bar{y}_{\cdot \cdot}$, $\hat{\mu}_i = \bar{y}_{i \cdot}$, $\hat{\tau} = \bar{y}_{i \cdot} - \bar{y}_{\cdot \cdot}$, to estimate common population variences $\sigma^2$, use $S_p^2 = \frac{\sum{i=1}^{a}(n_i - 1)s_i^2}{\sum{i=1}^{a}(n_i -1)}$
+The overall mean $\mu$ is $\frac{1}{a} \sum_{i=1}^{a} \mu_i$. Note that $\sum_{i=1}^{a}\tau_i = 0$. \\
+LS estimates: $\hat{\mu} = \bar{y}_{\cdot \cdot}$, $\hat{\mu}_i = \bar{y}_{i \cdot}$, $\hat{\tau} = \bar{y}_{i \cdot} - \bar{y}_{\cdot \cdot}$, to estimate common population variences $\sigma^2$, use $S_p^2 = \frac{\sum{i=1}^{a}(n_i - 1)s_i^2}{\sum{i=1}^{a}(n_i -1)}$
 \subsection*{Anova table (one-way layout)}
 \hrule width 6cm
 \vspace{6pt}
@@ -62,9 +62,11 @@ The overall mean $\mu$ is $\frac{1}{a} \sum_{i=1}^{a} \mu_i$. Note that $\sum_{i
   Pooled sample variance $S_p^2 = \frac{SSE}{N-a} = MSE$. \\
   Reject $H_0$ if $F > F_{\alpha, a-1, N-a}$, or p-value $< \alpha$.
 \end{multicols}
-Hypotheses: $H_0$: $\mu_1 = \mu_2 = \cdots = \mu_a$. $H_a$: Not all $\mu_i$ are equal. Or $H_0$: $\tau_1 = \tau_2 = \cdots = \tau_a = 0$. $H_a$: Not all $\tau_i = 0$.
-\paragraph{$100(1-\alpha)\%$ C.I. for $\mu_i$:} $\bar{y}_{i \cdot} \pm t_{\alpha/2, N-a}\sqrt{\frac{MSE}{n}}$
-\paragraph{To check model assumtions} use a normal probability plot and normality test (Anderson-Darling or some other), and a plot of residuals vs. predicted value (residual plot).
+\begin{flushleft}
+Hypotheses: $H_0$: $\mu_1 = \mu_2 = \cdots = \mu_a$. $H_a$: Not all $\mu_i$ are equal. Or $H_0$: $\tau_1 = \tau_2 = \cdots = \tau_a = 0$. $H_a$: Not all $\tau_i = 0$.\\
+\end{flushleft}
+$100(1-\alpha)\%$ C.I. for $\mu_i$: $\bar{y}_{i \cdot} \pm t_{\alpha/2, N-a}\sqrt{\frac{MSE}{n}}$\\
+To check model assumtions use a normal probability plot and normality test (Anderson-Darling or some other), and a plot of residuals vs. predicted value (residual plot).
 The residuals should look like they are from a normal distribution if the model assumptions were met.
 If the model assumptions were met, the residual plot should look like a random scatter.
 if the plot shows a 'funnel' shape, this is an indication of non-constant variance (heteroscedasticity). 
