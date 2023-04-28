@@ -30,6 +30,14 @@ The Hypothesis test is:     $H_0$: $\sigma_1^2 = \sigma_2^2$; $H_a$: $\sigma_1^2
 \textbf{left-tail($<$):} $F = \frac{S_2^2}{S_1^2} > F_{\alpha, n_2 - 1, n_1 - 1}$, 
 \textbf{right-tail ($>$):} $F = \frac{S_1^2}{S_2^2} > F_{\alpha, n_1 - 1, n_2 - 1}$.
 
+\subsection*{Paired t-test (2 measurements from each exp unit)}
+\hrule width 11cm
+\vspace{6pt}
+Advantage: less variability than a design with 2 seperate samples, test is more sensitive, ie more powerful. \\
+Hypothesis: $H_0$: $\mu_{\delta} = 0$. $H_a$: $\mu_{\delta} \neq 0$. Where $\mu_{\delta} = \mu_2 - \mu_1$ (before - after).
+Test statistic: $t = \frac{\bar{d}}{S_d / \sqrt{n}}$ Where $\bar{d} = \frac{1}{n}\sum_{j=1}^{n}d_j$ is the sample mean.
+And $S_d^2 = \frac{1}{n-1} \sum_{j=1}^{n}(d_j - \bar{d})^2$. (note: use $S_d = \sqrt{S_d^2}$) Reject $H_0$ if $\left| t \right| > t_{\alpha/2, n-1}$.
+
 \section*{ANOVA}
 \hrule width 10cm
 \vspace{6pt}
@@ -54,8 +62,8 @@ The overall mean $\mu$ is $\frac{1}{a} \sum_{i=1}^{a} \mu_i$. Note that $\sum_{i
   Pooled sample variance $S_p^2 = \frac{SSE}{N-a} = MSE$. \\
   Reject $H_0$ if $F > F_{\alpha, a-1, N-a}$, or p-value $< \alpha$.
 \end{multicols}
-Hypotheses: $H_0$: $\mu_1 = \mu_2 = \cdots = \mu_a$. $H_a$: Not all $\mu_i$ are equal. Or $H_0$: $\tau_1 = \tau_2 = \cdots = \tau_a = 0$. $H_a$: Not all $\tau_i = 0$. \\
-\paragraph{$100(1-\alpha)\%$ C.I. for $\mu_i$:} $\bar{y}_{i \cdot} \pm t_{\alpha/2, N-a}\sqrt{\frac{MSE}{n}}$ \\
+Hypotheses: $H_0$: $\mu_1 = \mu_2 = \cdots = \mu_a$. $H_a$: Not all $\mu_i$ are equal. Or $H_0$: $\tau_1 = \tau_2 = \cdots = \tau_a = 0$. $H_a$: Not all $\tau_i = 0$.
+\paragraph{$100(1-\alpha)\%$ C.I. for $\mu_i$:} $\bar{y}_{i \cdot} \pm t_{\alpha/2, N-a}\sqrt{\frac{MSE}{n}}$
 \paragraph{To check model assumtions} use a normal probability plot and normality test (Anderson-Darling or some other), and a plot of residuals vs. predicted value (residual plot).
 The residuals should look like they are from a normal distribution if the model assumptions were met.
 If the model assumptions were met, the residual plot should look like a random scatter.
@@ -67,16 +75,22 @@ The remedy is typically a transformation of the response.
 \vspace{6pt}
 To estimate the standard deviation $\sigma$, note that the slope $\approx \frac{1}{\sigma}$, only with z-score. Or you can estimate the distance from 16\% to 50\% as on standard deviation.
 To estimate the mean $\mu$ look at the $50^{th}$ percentile.
-\paragraph{Hypotheses} $H_0$: The data are drawn from a normal distribution. $H_a$: The data are not drawn froma normal disribution. Large p-value means normal.
-
-
+Hypotheses: $H_0$: The data are drawn from a normal distribution. $H_a$: The data are not drawn froma normal disribution. Large p-value means normal.
+\\
+\textbf{Standard to Percentile: }
+\begin{array}{c|c|c|c|c|c}
+    \text{Standard Deviations} & -2 & -1 & 0 & 1 & 2\\
+    \hline
+    \text{Percentile} & 2.27\% & 15.88\% & 50\% & 84.23\% & 97.72\% \\
+\end{array} \\
+Note that $\Phi(\text{standard deviation}) = \text{percentile}$, and $\Phi^{-1}(\text{percentile}) = \text{standard deviation}$.
 \subsection*{Contrasts}
 \hrule width 5cm
 \vspace{6pt}
-$\Gamma = \sum{i=1}^{a} c_i \mu_i$, where $c_i$'s are constants such that $\sum{i=1}^{a} c_i = 0$. To estimate $\Gamma$ use $\hat{\Gamma} = \sum{i=1}^{a}c_i \bar{y}_{i \cdot}$ \\
-Hypotheses: $H_0$: $\sum{i=1}^{a} c_i \mu_i = 0$. $H_a$: $\sum{i=1}^{a} c_i \mu_i \neq 0$. (or $<$ or $>$). \\
-Test statistic: $t = (\sum{i=1}^{a} c_i \bar{y}_{i \cdot}) / (\sqrt{\frac{MSE}{n}\sum{i=1}^{a} c_i^2})$. Reject $H_0$ if $t$ in C.R. of $t_{\alpha, N-a}$ (or $\alpha/2$ for 2-tail) or if p-value $< \alpha$. \\
-Note: $F = (\sum{i=1}^{a} c_i \bar{y}_{i \cdot})^2 / (\frac{MSE}{n}\sum{i=1}^{a} c_i^2)$ can be used to test 2-tailed. Reject $H_0$ if $F > F_{\alpha,1,N-a}$ or if p-value $< \alpha$.
+$\Gamma = \sum_{i=1}^{a} c_i \mu_i$, where $c_i$'s are constants such that $\sum_{i=1}^{a} c_i = 0$. To estimate $\Gamma$ use $\hat{\Gamma} = \sum_{i=1}^{a}c_i \bar{y}_{i \cdot}$ \\
+Hypotheses: $H_0$: $\sum_{i=1}^{a} c_i \mu_i = 0$. $H_a$: $\sum_{i=1}^{a} c_i \mu_i \neq 0$. (or $<$ or $>$). \\
+Test statistic: $t = (\sum_{i=1}^{a} c_i \bar{y}_{i \cdot}) / (\sqrt{\frac{MSE}{n}\sum_{i=1}^{a} c_i^2})$. Reject $H_0$ if $t$ in C.R. of $t_{\alpha, N-a}$ (or $\alpha/2$ for 2-tail) or if p-value $< \alpha$. \\
+Note: $F = (\sum_{i=1}^{a} c_i \bar{y}_{i \cdot})^2 / (\frac{MSE}{n}\sum_{i=1}^{a} c_i^2)$ can be used to test 2-tailed. Reject $H_0$ if $F > F_{\alpha,1,N-a}$ or if p-value $< \alpha$.
 
 \subsection*{Pairwise comparisons}
 \hrule width 5cm
@@ -132,24 +146,30 @@ $\bar{y}_{i \cdot} - \bar{y}_{j \cdot} \pm q_{\alpha,a,N-a} \sqrt{\frac{MSE}{2} 
 \paragraph{Fail to reject $H_0$} "There is not enough statistical evidence to support (the statement of $H_a$)."
 or "The evidence from the data is consistent with (the statement of $H_0$)"
 
+\subsection*{Test of equality of variances}
+\hrule width 5cm
+\vspace{6pt}
+Hypothesis: $H_0$: $\sigma_1^2 = \sigma_2^2 = \cdots = \sigma_a^2$. $H_a$: at least one $\sigma_i^2$ is different.
+\paragraph{Bartlett's test} (use if data is normal) assumes normaility for each treatment. Very sensitive to non-normality.
+\paragraph{Modified Levene's test} (use if data $\approx$ normal) robust for non-normaility. For data from a normal dist, not as powerful as Bartlett's.
 
-\begin{figure}[h]
-  \centering
-  \begin{subfigure}[b]{0.3\textwidth}
-      \includegraphics[width=1.15\textwidth]{./images/a.png}
-    \label{fig:img1}
-  \end{subfigure}
-  \hfill
-  \begin{subfigure}[b]{0.3\textwidth}
-      \includegraphics[width=1.15\textwidth]{./images/b.png}
-    \label{fig:img2}
-  \end{subfigure}
-  \hfill
-  \begin{subfigure}[b]{0.3\textwidth}
-      \includegraphics[width=1.15\textwidth]{./images/c.png}
-    \label{fig:img2}
-  \end{subfigure}
-  \label{fig:both}
-\end{figure}
+% \begin{figure}[h]
+%   \centering
+%   \begin{subfigure}[b]{0.3\textwidth}
+%       \includegraphics[width=1.15\textwidth]{./images/a.png}
+%     \label{fig:img1}
+%   \end{subfigure}
+%   \hfill
+%   \begin{subfigure}[b]{0.3\textwidth}
+%       \includegraphics[width=1.15\textwidth]{./images/b.png}
+%     \label{fig:img2}
+%   \end{subfigure}
+%   \hfill
+%   \begin{subfigure}[b]{0.3\textwidth}
+%       \includegraphics[width=1.15\textwidth]{./images/c.png}
+%     \label{fig:img2}
+%   \end{subfigure}
+%   \label{fig:both}
+% \end{figure}
 
 \end{document}
