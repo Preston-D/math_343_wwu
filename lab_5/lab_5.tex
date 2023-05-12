@@ -58,16 +58,86 @@ $\frac{100 + 83.9}{2} - \frac{79.2 + 85.9}{2} = 9.4$ \\
     \label{fig:1_c}
   \end{figure}
 
-\subsection*{d)}
-\subsubsection*{i.}
-\subsubsection*{ii.}
-\subsubsection*{iii.}
-\subsubsection*{iv.}
-\subsection*{e)}
+$\alpha = 0.10$, for each following test. \\
+Test of Significance of Main Effects of Factor A:
+$H_0$: $\tau_1 = \tau_2 = 0$ \\
+$H_a$: At least one $\tau_i$ is different.\\
 
+Since the p-value $= 0.327 > \alpha$, we can conlcude the following.
+There is not enough statistical evidence to support the hypothesis
+that at least one $\tau_i$ is different.
+\\
+Test of Significance of Main Effects of Factor B:
+$H_0$: $\beta_1 = \beta_2 = 0$ \\
+$H_a$: At least one $\beta_i$ is different.\\
+
+Since the p-value $= 0.021 < \alpha$, we can conlcude the following.
+There is enough statistical evidence to support the hypothesis
+that at least one $\beta_i$ is different.
+\\
+Test of Significance of Main Effects of Factor B:
+$H_0$: $(\tau \beta)_{11} = (\tau \beta)_{12} = (\tau \beta)_{22} = (\tau \beta)_{21} = 0$ \\
+$H_a$: At least one $\tau \beta)_{ij}$ is different.\\
+
+Since the p-value $= 0.054 < \alpha$, we can conlcude the following.
+There is enough statistical evidence to support the hypothesis
+that at least one $\tau \beta)_{ij}$ is different.
+
+
+\subsection*{d)}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{./images/1_d.png}
+    \caption{Interaction plot from Minitab.}
+    \label{fig:1_d}
+  \end{figure}
+\subsubsection*{i.}
+Yes. Since the lines are not relatively parallel there appears to be interaction.
+\subsubsection*{ii.}
+Effect of source of protein from graph $\sim 4.5$. This does support my previous answer.
+\subsubsection*{iii.}
+Effect of source of protein at the “low” level $\sim 4.7$. This does support my previous answer.
+\subsubsection*{iv.}
+I would choose source: beef, and Level: high to increase the weight gain in rats.
+\subsection*{e)}
+The confidence interval formula is:
+$\bar{y}_{i \cdot \cdot} - \bar{y}_{i` \cdot \cdot} \pm q_{\alpha, a, df_{error}}\sqrt{\frac{MSE}{b \cdot n}}$
+
+The 95\% C.I. for the mean weight gain corresponding to high protien diet is:
+$\bar{y}_{2 \cdot \cdot} - \bar{y}_{1 \cdot \cdot} \pm q_{.05, 2, 1}\sqrt{\frac{MSE}{2 \cdot 10}}$ \\
+$100 - 85.9 \pm 3.67\sqrt{\frac{223.6}{20}}$
+$14.1 \pm 12.27$
 \section*{Question 2}
 \subsection*{a)}
+\begin{tikzpicture}
+    \begin{axis}[
+        title={Interaction Plot with Interaction},
+        xlabel={Factor B},
+        ylabel={Response},
+        symbolic x coords={B-, B+},
+        xtick=data,
+        legend pos=north west
+    ]
+    \addplot coordinates {(B-, -1) (B+, 1)};
+    \addplot coordinates {(B-, 1) (B+, -1)};
+    \legend{A-,A+}
+    \end{axis}
+    \end{tikzpicture}
 \subsection*{b)}
+\begin{tikzpicture}
+    \begin{axis}[
+        title={Interaction Plot without Interaction},
+        xlabel={Factor B},
+        ylabel={Response},
+        symbolic x coords={B-, B+},
+        xtick=data,
+        legend pos=north west
+    ]
+    \addplot coordinates {(B-, -1) (B+, -1)};
+    \addplot coordinates {(B-, 1) (B+, 1)};
+    \legend{A-,A+}
+    \end{axis}
+    \end{tikzpicture}
 
 
 \end{document}
