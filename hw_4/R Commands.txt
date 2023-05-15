@@ -17,3 +17,24 @@ critical_value <- qtukey(1 - alpha_ind, a, DFerror)
 
 # Print the critical value
 print(critical_value)
+
+
+#----------
+
+
+# Degrees of freedom
+DFa <- 1
+DFb <- 2
+DFinteraction <- 2
+DFerror <- 12
+DFtotal <- 17
+
+# F-values
+Fa <- 3.21
+Fb <- 2.05
+Finteraction <- 4.67
+
+# Calculate p-values
+p_value_a <- 1 - pf(Fa, DFa, DFerror)
+p_value_b <- 1 - pf(Fb, DFb, DFerror)
+p_value_interaction <- 1 - pf(Finteraction, DFinteraction, DFerror)

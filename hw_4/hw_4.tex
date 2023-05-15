@@ -68,6 +68,7 @@ The Main Effect of $B$ is:
       & = \frac{30 + 55}{2} - \frac{25 + 10}{2} \\
       & = 25
 \end{align*}
+\clearpage
 \begin{flushleft}
 The Interaction Effect of $A$ and $B$ is:
 \end{flushleft}
@@ -86,19 +87,51 @@ Note that calculated values are bold.
 \begin{array}{c|c|c|c|c|c}
     \text{Source} &\text{DF}& \text{SS} & \text{MS} & \text{F} &\text{P}  \\
     \hline
-    \text{A} & \text{1} & \text{0.322} & \textbf{-} & \textbf{-} &\textbf{-}  \\
-    \text{B} & \textbf{-} & \text{80.554} & \text{40.2771} & \text{4.59} &\textbf{-}  \\
-    \text{Interaction} & \textbf{-}  & \textbf{-} & \textbf{-} & \textbf{-} &\textbf{-}  \\
-    \text{Error} & \text{12} & \text{105.327} & \text{8.7773} & \textbf{-} &\textbf{-}  \\
-    \text{Total} & \text{17}  & \text{231.551} &  &  &  \\
+    \text{A}            & \text{1}   & \text{0.322}   & \textbf{0.322}      & \textbf{0.0366}  &\textbf{0.098}  \\
+    \text{B}            & \textbf{2} & \text{80.554}  & \text{40.2771}  & \text{4.59} &\textbf{0.171}  \\
+    \text{Interaction}  & \textbf{2} & \textbf{45.348}     & \textbf{22.674}      & \textbf{2.5832}  &\textbf{0.031}  \\
+    \text{Error}        & \text{12}  & \text{105.327} & \text{8.7773}   &   &  \\
+    \text{Total}        & \text{17}  & \text{231.551} &  &  &  \\
 
 \end{array}
 \end{equation*}\\
 
 \subsection*{b)}
+3 levels where used for Factor B.
 \subsection*{c)}
+18 total observations of the experiment were performed.
 \subsection*{d)}
+\begin{flushleft}
+    \textbf{Interaction:} \\
+    $H_0$: $(\tau \beta)_{11} = (\tau \beta)_{12} = (\tau \beta)_{22} = (\tau \beta)_{21} = (\tau \beta)_{13} = (\tau \beta)_{23} = 0$ \\
+    $H_a$: At least one $(\tau \beta)_{ij}$ is different.\\
+\end{flushleft}
 
+Since the p-value for the interaction of the two factors is $0.031 < \alpha = 0.05$, we can conclude the following.
+There is enough evidence to support the hypotheis that at least one $(\tau \beta)_{ij}$ is different,
+ie, there exists interaction between the two factors.
+
+
+\begin{flushleft}
+    \textbf{Factor A:}\\
+    $H_0$: $\tau_1 = \tau_2 = 0$ \\
+    $H_a$: At least one $\tau_i$ is different.\\
+\end{flushleft}
+
+Since the p-value is $0.098 > \alpha = 0.05$, we can conclude the following. \\
+There is not enough statistic evidence to support at least one $\tau_i$ being different.
+
+
+\begin{flushleft}
+    \textbf{Factor B:} \\
+    $H_0$: $\beta_1 = \beta_2 = \beta_3 = 0$ \\
+    $H_a$: At least one $\beta_i$ is different.\\
+\end{flushleft}
+
+Since the p-value is $0.171 > \alpha = 0.05$, we can conclude the following. \\
+There is not enough statistic evidence to support at least one $\beta_i$ being different.
+
+\clearpage
 \section*{Question 3}
 
 \subsection*{b)}
@@ -141,7 +174,7 @@ Since the p-value for the interaction of the two factors is $0.318 > \alpha = 0.
 There is not enough evidence to support the hypotheis that at least one $(\tau \beta)_{ij}$ is different,
 ie, there does not exist interaction between the two factors. 
 
-\clearpage
+
 \subsection*{c)}
 \begin{figure}[h]
     \centering
@@ -412,9 +445,36 @@ The estimated interaction effect of A and B is:
 \end{figure}
 
 Since there is very little curvature, interaction is likely very small. However, there is curvature, so the interaction may be significant.
-\clearpage
-\section*{Question 7}
 
+\section*{Question 7}
+\begin{flushleft}
+In terms of these means, $\mu_{(1)}, \mu_a, \mu_b$, and $\mu_{ab}$ are the overall mean,
+the effect of factor A, the effect of factor B, and the interaction effect respectively:\\
+
+$\mu_{(1)} = (\mu_{11} + \mu_{21} + \mu_{12} + \mu_{22}) / 4$,\\
+$\mu_a = (\mu_{21} + \mu_{22}) / 2 - (\mu_{11} + \mu_{12}) / 2$,\\
+$\mu_b = (\mu_{12} + \mu_{22}) / 2 - (\mu_{11} + \mu_{21}) / 2$,\\
+$\mu_{ab} = (mu_{11} + mu_{22}) / 2 - (mu_{21} + mu_{12}) / 2$.\\
+\end{flushleft}
+\begin{flushleft}
+The intercept $\beta_0$ is the expected value of y when all factors are at their low level
+(i.e., $x_1 = x_2 = -1$), which corresponds to $\mu_{11}$.
+However, we must also account for the changes in y due to the other terms
+in the regression model, which are non-zero when the factors are at their low level.
+In other words, $\beta_0 = \mu_{11} + \beta_1 + \beta_2 + \beta_3$. \\
+\end{flushleft}
+\begin{flushleft}
+Expressing $\beta_1, \beta_2,$ and $\beta_3$ in terms of the factor-level means, we can substitute these expressions into the equation for $\beta_0$:\\
+$\beta_1 = \mu_a / 2$,\\
+$\beta_2 = \mu_b / 2$,\\
+$\beta_3 = \mu_{ab} / 2$.\\
+\end{flushleft}
+\begin{flushleft}
+Therefore, $\beta_0 = \mu_{11} + \mu_a / 2 + \mu_b / 2 + \mu_{ab} / 2$, which simplifies to:
+\end{flushleft}
+\begin{align*}
+    \beta_0 = \mu_{(1)} - \mu_{ab} / 2.
+\end{align*}
 
 
 \end{document}
