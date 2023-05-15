@@ -169,7 +169,8 @@ Since the p-value is $0.004 < \alpha = 0.05$, we can conclude the following. \\
 There is enough statistic evidence to support at least one $\tau_i$ being different.
 % This is significant so do a tukeys pairwise.
 \\
-\textbf{a Tukey’s test for pairwise comparison} \\
+\textbf{Tukey's test for pairwise comparison} \\
+First we calulate the means of the Phosphorous Types: \\
 \begin{equation*}
     \begin{array}{c|c|c}
         \text{Phosphorous Type} &\text{N}& \text{Mean} \\
@@ -181,27 +182,237 @@ There is enough statistic evidence to support at least one $\tau_i$ being differ
     \end{array}
     \end{equation*}\\
 \begin{flushleft}
+Then we calculate $\alpha$ from the $FWE = 0.05$: \\
+\end{flushleft}
+$\alpha = 1 - (1- 0.05)^{\frac{1}{6}} = 0.0085$
+
+\begin{flushleft}
+    Then note that: \\
+    \end{flushleft}
+\begin{align*}
+    q_{\alpha , a , df_{error}}\sqrt{\frac{MSE}{b \cdot n}} & = q_{0.0085 , 3 , 12}\sqrt{\frac{52.8}{2 \cdot 6}} \\
+    & = 5.17 \cdot 2.0976 \\
+    & = 10.85
+\end{align*}
+
+
+\begin{flushleft}
     The difference in means are:
 \end{flushleft}
 \begin{equation*}
-    \begin{array}{c|c}
-        \text{Difference of Types} &\text{Difference}\\
+    \begin{array}{c|c|c}
+        \text{Difference of Types} &\text{Difference}&95\% \text{Simultaneous C.I.}\\
         \hline
-        2 - 1 & 273.335 - 260 = 13.335\\
-        3 - 1 & 256.665 - 260 = -3.335\\
-        3 - 2 & 256.665 - 273.335 = -16.67\\
+        2 - 1 & 273.335 - 260 = 13.335 & (2.48, 24.16)\\
+        3 - 1 & 256.665 - 260 = -3.335 & (-14.18, 7.51)\\
+        3 - 2 & 256.665 - 273.335 = -16.67 & (-33.34, -5.81)\\
+    
+    \end{array}
+    \end{equation*}\\
+\begin{flushleft}
+    Since the C.I. for the difference in means 3 and 1 contains 0, we can say that the means are not significantly different. The line graph representing the data is as follows:
+\end{flushleft}
+
+\begin{tikzpicture}[yscale=-1]
+    % Define the positions of the labels
+    \coordinate (labelPos) at (0, 0);
+    \coordinate (3Pos) at (3, 0);
+    \coordinate (1Pos) at (6, 0);
+    \coordinate (2Pos) at (9, 0);
+
+    % Draw the labels
+    \node at (labelPos) {\textbf{Phosphorous Type}}; % Treatment label
+    \node at (3Pos) {\textbf{(3)}};
+    \node at (1Pos) {\textbf{(1)}};
+    \node at (2Pos) {\textbf{(2)}};
+
+    % Draw the line
+    \draw[ultra thick] ([yshift=0.5cm]1Pos) -- ([yshift=0.5cm]3Pos);
+    % \draw[thick] ([yshift=1cm]1Pos) -- ([yshift=1cm]2Pos); % another theoretical line.
+\end{tikzpicture}
+
+\subsection*{e)}
+For a Fisher's LSD 95\% confidence
+interval for difference in mean between Phosphor Type 1 and Phosphorous Type 2.
+We can say the 2 treatment means are significantly different if:
+
+\begin{align*}
+    \left| \bar{y}_{i} - \bar{y}_{j} \right| &> t_{\alpha/2, N-a} \sqrt{MSE \cdot \left( \frac{1}{n_i} + \frac{1}{n_j} \right)} \\
+    \left| 260 - 273.33 \right|  &> t_{0.025, 18-3} \sqrt{5.28 \cdot \left( \frac{2}{6} \right)} \\
+    13.33 &> 2.131 \cdot 1.326 \\
+    13.33 &> 2.825
+\end{align*}
+
+Therefore, via Fisher's LSD method, The means for Phosphorous Types 1 and 2 are significantly different.
+
+
+\clearpage
+\section*{Question 4}
+\subsection*{a)}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{./images/4_a.png}
+    \caption{Anova table from Minitab.}
+    \label{fig:3_b_2}
+\end{figure}
+
+\subsection*{b)}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{./images/4_b.png}
+    \caption{Interaction plot from Minitab.}
+    \label{fig:3_b_2}
+\end{figure}
+
+Based on the interaction plot there does appear to be interaction between the 2 factors.
+
+\subsection*{c)}
+\begin{flushleft}
+    $H_0$: There does not exist interaction between the two factors. \\
+    $H_a$: There does exist interaction between the two factors.\\
+\end{flushleft}
+
+Since the p-value for the interaction of the two factors is $0.026 < \alpha = 0.05$, we can conclude the following.
+There is enough evidence to support the hypotheis that there does exist interaction between the two factors. 
+\subsection*{d)}
+
+\textbf{Tukeys test for pairwise comparison at FWE = 0.05} \\
+\begin{tikzpicture}[yscale=-1]
+    % Define the positions of the labels
+    \coordinate (labelPos) at (0, 0);
+
+    \coordinate (1Pos) at (2, 0);
+    \coordinate (2Pos) at (4, 0);
+    \coordinate (3Pos) at (6, 0);
+    \coordinate (4Pos) at (8, 0);
+    \coordinate (5Pos) at (10, 0);
+    \coordinate (6Pos) at (12, 0);
+    \coordinate (7Pos) at (14, 0);
+    \coordinate (8Pos) at (16, 0);
+
+    % Draw the labels
+    % \node at (labelPos) {\textbf{Drill Speed $\times$ Feed Rate }}; % Treatment label
+    
+    \node at (1Pos) {\text{(125 .030)}};
+    \node at (2Pos) {\text{(125 .045)}};
+    \node at (3Pos) {\text{(125 .015)}};
+    \node at (4Pos) {\text{(125 .060)}};
+    \node at (5Pos) {\text{(200 .030)}};
+    \node at (6Pos) {\text{(200 .015)}};
+    \node at (7Pos) {\text{(200 .045)}};
+    \node at (8Pos) {\text{(200 .060)}};
+
+
+    % Draw the line
+    \draw[ultra thick] ([yshift=0.5cm]1Pos) -- ([yshift=0.5cm]2Pos);
+    \draw[ultra thick] ([yshift=1cm]2Pos) -- ([yshift=1cm]6Pos);
+    \draw[ultra thick] ([yshift=1.5cm]3Pos) -- ([yshift=1.5cm]8Pos);
+    
+    
+\end{tikzpicture}
+\subsection*{e)}
+\textbf{Fisher's LSD 95\% C.I for the difference in treatment means} \\
+The mean for Drill Speed = 125, Feed Rate = 0.015, $\bar{y}_{125, 0.015} = 2.740$. \\
+The mean for Drill Speed = 200, Feed Rate = 0.045, $\bar{y}_{200, 0.045} = 2.865$. \\
+The absolute value of their difference is $\left| 2.740 - 2.865 \right| = 0.125$.
+\begin{flushleft}
+The two treatment means are significantly different if:
+\end{flushleft}
+\begin{align*}
+    0.125 &> t_{\alpha/2, df_{error}}\sqrt{\frac{2 MSE}{n}} \\
+          &> t_{0.025, 8}\sqrt{\frac{2 \cdot 0.0026}{2}} \\
+          &> 2.306 \cdot 0.0509 \\
+          &> 0.1173
+\end{align*}
+\begin{flushleft}
+Therfore, the two treatment means $\bar{y}_{125, 0.015}$ and $\bar{y}_{200, 0.045}$ are significantly different at $\alpha = 0.05$
+\end{flushleft}
+\section*{Question 5}
+\subsection*{d)}
+For the model: $y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_{22} x^{2}_2 + \beta_{12} x_1 x_2 + \epsilon$
+
+The coefficients are:
+\begin{equation*}
+    \begin{array}{c|c|c|c}
+        \text{Coefficient} &\text{Value} &\text{P-value} &\text{Signifcance at } \alpha = 0.05 \\
+        \hline
+        \beta_0  & -977.5     & 0.000 & Yes\\
+        \beta_1  & -10.64     & 0.013 & Yes\\
+        \beta_2  & 2.028      & 0.000 & Yes\\
+        \beta_22 & -0.001040  & 0.000 & Yes\\
+        \beta_12 & 0.01060    & 0.016 & Yes
     
     \end{array}
     \end{equation*}\\
 
-\subsection*{e)}
+Since each coefficient is significant at $\alpha = 0.05$.
+The model $y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_{22} x^{2}_2 + \beta_{12} x_1 x_2 + \epsilon$ is supported by the experiment.
 
-\section*{Question 4}
-
-\section*{Question 5}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{./images/5_d.png}
+    \caption{Surface plot from Minitab.}
+    \label{fig:3_b_2}
+\end{figure}
 
 \section*{Question 6}
 
+\subsection*{a)}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{./images/6_a_1.png}
+    \caption{Coefficients from Minitab.}
+    \label{fig:3_b_2}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.7\textwidth]{./images/6_a_2.png}
+    \caption{Regression equation from Minitab.}
+    \label{fig:3_b_2}
+\end{figure}
+Thus the regression model is:
+% $y = 64.15 + 10.05 x_1 + 21.70 x_2 + 8.05 x_1 x_2$
+\subsection*{b)}
+\begin{flushleft}
+The estimated main effect of A is:
+\end{flushleft}
+\begin{align*}
+    A &= 2 \hat{\beta}_1\\
+      &= 2(10.05)\\
+      &= 20.10
+\end{align*}
+\begin{flushleft}
+The estimated main effect of B is:
+\end{flushleft}
+\begin{align*}
+    B &= 2 \hat{\beta}_2\\
+      &= 2(21.70)\\
+      &= 43.40
+\end{align*}
+\begin{flushleft}
+The estimated interaction effect of A and B is:
+\end{flushleft}
+\begin{align*}
+    AB &= 2 \hat{\beta}_3\\
+       &= 2(8.05)\\
+       &= 16.10
+\end{align*}
+
+
+\clearpage
+\subsection*{c)}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.7\textwidth]{./images/6_c.png}
+    \caption{Regression equation from Minitab.}
+    \label{fig:3_b_2}
+\end{figure}
+
+Since there is very little curvature, interaction is likely very small. However, there is curvature, so the interaction may be significant.
+\clearpage
 \section*{Question 7}
 
 
