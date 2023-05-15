@@ -1,0 +1,19 @@
+# Load the necessary library
+library(stats)
+
+# Set the Family-wise Error rate (FWE) and the number of pairwise comparisons (a choose 2)
+FWE <- 0.05
+a <- 3
+n <- 6
+
+# Calculate the individual alpha level
+alpha_ind <- 1 - (1 - FWE)^(1/n)
+
+# Set the error degrees of freedom (DFerror)
+DFerror <- 12
+
+# Calculate the critical value
+critical_value <- qtukey(1 - alpha_ind, a, DFerror)
+
+# Print the critical value
+print(critical_value)
