@@ -6,6 +6,7 @@
 \usepackage{graphicx}
 \usepackage{subcaption}
 \usepackage{pgfplots}
+\usepackage{float}
 \usepackage[margin=1in]{geometry}
 \usepgfplotslibrary{statistics}
 
@@ -30,23 +31,24 @@
 \section*{Question 1}
 
 \subsection*{a)}
-
-\begin{tikzpicture}
-    \begin{axis}[
-        title={Interaction Plot},
-        xlabel={Factor $B$},
-        ylabel={Response},
-        symbolic x coords={$B^{-}$, $B^{+}$},
-        xtick=data,
-        legend pos=north west
-    ]
-    \addplot coordinates {($B^{-}$, 25) ($B^{+}$, 30)};
-    \addplot coordinates {($B^{-}$, 10) ($B^{+}$, 55)};
-    \legend{$A^{-}$,$A^{+}$}
-    \end{axis}
-\end{tikzpicture}
-
-Since the Lines in the interaction plot are not parallel, this indicates interaction.
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            title={Interaction Plot},
+            xlabel={Factor $B$},
+            ylabel={Response},
+            symbolic x coords={$B^{-}$, $B^{+}$},
+            xtick=data,
+            legend pos=north west
+        ]
+        \addplot coordinates {($B^{-}$, 25) ($B^{+}$, 30)};
+        \addplot coordinates {($B^{-}$, 10) ($B^{+}$, 55)};
+        \legend{$A^{-}$,$A^{+}$}
+        \end{axis}
+    \end{tikzpicture}
+    \caption{ An interaction plot for a $2^2$ factorial design. Since the Lines in the interaction plot are not parallel, this indicates interaction. }
+\end{figure}
 
 
 \subsection*{b)}
@@ -81,20 +83,27 @@ The Interaction Effect of $A$ and $B$ is:
 \section*{Question 2}
 
 \subsection*{a)}
-\textbf{Two-way ANOVA: y versus, A, B} \\
-Note that calculated values are bold.
-\begin{equation*}
-\begin{array}{c|c|c|c|c|c}
-    \text{Source} &\text{DF}& \text{SS} & \text{MS} & \text{F} &\text{P}  \\
-    \hline
-    \text{A}            & \text{1}   & \text{0.322}   & \textbf{0.322}      & \textbf{0.0366}  &\textbf{0.098}  \\
-    \text{B}            & \textbf{2} & \text{80.554}  & \text{40.2771}  & \text{4.59} &\textbf{0.171}  \\
-    \text{Interaction}  & \textbf{2} & \textbf{45.348}     & \textbf{22.674}      & \textbf{2.5832}  &\textbf{0.031}  \\
-    \text{Error}        & \text{12}  & \text{105.327} & \text{8.7773}   &   &  \\
-    \text{Total}        & \text{17}  & \text{231.551} &  &  &  \\
 
-\end{array}
-\end{equation*}\\
+
+
+\begin{figure}[H]
+    \title{test}
+    \centering
+    \textbf{Two-way ANOVA: y versus, A, B} \\
+    \begin{equation*}
+        \begin{array}{c|c|c|c|c|c}
+            \text{Source} &\text{DF}& \text{SS} & \text{MS} & \text{F} &\text{P}  \\
+            \hline
+            \text{A}            & \text{1}   & \text{0.322}   & \textbf{0.322}      & \textbf{0.0366}  &\textbf{0.098}  \\
+            \text{B}            & \textbf{2} & \text{80.554}  & \text{40.2771}  & \text{4.59} &\textbf{0.171}  \\
+            \text{Interaction}  & \textbf{2} & \textbf{45.348}     & \textbf{22.674}      & \textbf{2.5832}  &\textbf{0.031}  \\
+            \text{Error}        & \text{12}  & \text{105.327} & \text{8.7773}   &   &  \\
+            \text{Total}        & \text{17}  & \text{231.551} &  &  &  \\
+        
+        \end{array}
+        \end{equation*}\\
+    \caption{ Two-way ANOVA: y versus, A, B. Note that calculated values are bold. }
+\end{figure}
 
 \subsection*{b)}
 3 levels where used for Factor B.
@@ -166,7 +175,7 @@ There is not enough statistic evidence to support at least one $\beta_i$ being d
 \end{figure}
 
 \begin{flushleft}
-    $H_0$: $(\tau \beta)_{11} = (\tau \beta)_{12} = (\tau \beta)_{22} = (\tau \beta)_{21} = 0$ \\
+    $H_0$: $(\tau \beta)_{11} = (\tau \beta)_{12} = (\tau \beta)_{22} = (\tau \beta)_{21} = (\tau \beta)_{32} = (\tau \beta)_{31} = 0$ \\
     $H_a$: At least one $(\tau \beta)_{ij}$ is different.\\
 \end{flushleft}
 
@@ -267,17 +276,22 @@ $\alpha = 1 - (1- 0.05)^{\frac{1}{6}} = 0.0085$
 \subsection*{e)}
 For a Fisher's LSD 95\% confidence
 interval for difference in mean between Phosphor Type 1 and Phosphorous Type 2.
-We can say the 2 treatment means are significantly different if:
-
+First we note the difference in means $\beta_j - \beta_{j`} = 260 - 273.33 = -13.33$.
+% We can say the 2 treatment means are significantly different if:
+% \begin{align*}
+%     \left| \bar{y}_{i} - \bar{y}_{j} \right| &> t_{\alpha/2, N-a} \sqrt{MSE \cdot \left( \frac{1}{n_i} + \frac{1}{n_j} \right)} \\
+%     \left| 260 - 273.33 \right|  &> t_{0.025, 18-3} \sqrt{5.28 \cdot \left( \frac{2}{6} \right)} \\
+%     13.33 &> 2.131 \cdot 1.326 \\
+%     13.33 &> 2.825
+% \end{align*}
+% Therefore, via Fisher's LSD method, The means for Phosphorous Types 1 and 2 are significantly different.
 \begin{align*}
-    \left| \bar{y}_{i} - \bar{y}_{j} \right| &> t_{\alpha/2, N-a} \sqrt{MSE \cdot \left( \frac{1}{n_i} + \frac{1}{n_j} \right)} \\
-    \left| 260 - 273.33 \right|  &> t_{0.025, 18-3} \sqrt{5.28 \cdot \left( \frac{2}{6} \right)} \\
-    13.33 &> 2.131 \cdot 1.326 \\
-    13.33 &> 2.825
+    -13.33 &\pm t_{\alpha/2, df_{error}} \sqrt{\frac{2 \cdot MSE}{a \cdot n}} \\
+           &\pm t_{0.025, 12} \sqrt{\frac{2 \cdot 52.8}{3 \cdot 18}} \\
+           &\pm 2.179 (1.3984) \\
+           &\pm 3.047
 \end{align*}
-
-Therefore, via Fisher's LSD method, The means for Phosphorous Types 1 and 2 are significantly different.
-
+We are 95\% confident that the true difference in means for Phosphorous Types 1 and 2 is between -16.377 and -10.283.
 
 \clearpage
 \section*{Question 4}
@@ -298,7 +312,7 @@ Therefore, via Fisher's LSD method, The means for Phosphorous Types 1 and 2 are 
     \label{fig:3_b_2}
 \end{figure}
 
-Based on the interaction plot there does appear to be interaction between the 2 factors.
+Based on the interaction plot, since the lines are not parallel, there does appear to be interaction between the 2 factors.
 
 \subsection*{c)}
 \begin{flushleft}
@@ -310,7 +324,7 @@ Since the p-value for the interaction of the two factors is $0.026 < \alpha = 0.
 There is enough evidence to support the hypotheis that there does exist interaction between the two factors. 
 \subsection*{d)}
 
-\textbf{Tukeys test for pairwise comparison at FWE = 0.05} \\
+\textbf{Tukey's test for pairwise comparison at FWE = 0.05} \\
 \begin{tikzpicture}[yscale=-1]
     % Define the positions of the labels
     \coordinate (labelPos) at (0, 0);
@@ -348,19 +362,29 @@ There is enough evidence to support the hypotheis that there does exist interact
 \textbf{Fisher's LSD 95\% C.I for the difference in treatment means} \\
 The mean for Drill Speed = 125, Feed Rate = 0.015, $\bar{y}_{125, 0.015} = 2.740$. \\
 The mean for Drill Speed = 200, Feed Rate = 0.045, $\bar{y}_{200, 0.045} = 2.865$. \\
-The absolute value of their difference is $\left| 2.740 - 2.865 \right| = 0.125$.
-\begin{flushleft}
-The two treatment means are significantly different if:
-\end{flushleft}
+The value of their difference is $2.740 - 2.865 = -0.125$.
+% \begin{flushleft}
+% The two treatment means are significantly different if:
+% \end{flushleft}
+% \begin{align*}
+%     0.125 &> t_{\alpha/2, df_{error}}\sqrt{\frac{2 MSE}{n}} \\
+%           &> t_{0.025, 8}\sqrt{\frac{2 \cdot 0.0026}{2}} \\
+%           &> 2.306 \cdot 0.0509 \\
+%           &> 0.1173
+% \end{align*}
+% \begin{flushleft}
+% Therfore, the two treatment means $\bar{y}_{125, 0.015}$ and $\bar{y}_{200, 0.045}$ are significantly different at $\alpha = 0.05$
+% \end{flushleft}
 \begin{align*}
-    0.125 &> t_{\alpha/2, df_{error}}\sqrt{\frac{2 MSE}{n}} \\
-          &> t_{0.025, 8}\sqrt{\frac{2 \cdot 0.0026}{2}} \\
-          &> 2.306 \cdot 0.0509 \\
-          &> 0.1173
+    -0.125 &\pm t_{\alpha/2, df_{error}} \sqrt{\frac{2 \cdot MSE}{n}} \\
+           &\pm t_{0.025, 8} \sqrt{\frac{2 \cdot 0.0026}{16}} \\
+           &\pm 2.306 (0.018) \\
+           &\pm 0.041
 \end{align*}
-\begin{flushleft}
-Therfore, the two treatment means $\bar{y}_{125, 0.015}$ and $\bar{y}_{200, 0.045}$ are significantly different at $\alpha = 0.05$
-\end{flushleft}
+We are 95\% confident that the true difference in means for Drill Speed = 125, Feed Rate = 0.015 and Drill Speed = 200, Feed Rate = 0.045
+is between -1.166 and -1.084.
+
+
 \section*{Question 5}
 \subsection*{d)}
 For the model: $y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_{22} x^{2}_2 + \beta_{12} x_1 x_2 + \epsilon$
@@ -368,7 +392,7 @@ For the model: $y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_{22} x^{2}_2 + \
 The coefficients are:
 \begin{equation*}
     \begin{array}{c|c|c|c}
-        \text{Coefficient} &\text{Value} &\text{P-value} &\text{Signifcant at } \alpha = 0.05\text{?}\\
+        \text{Coefficient} &\text{Value} &\text{P-value} &\text{Significant at } \alpha = 0.05\text{?}\\
         \hline
         \beta_0  & -977.5     & 0.000 & Yes\\
         \beta_1  & -10.64     & 0.013 & Yes\\
@@ -451,12 +475,13 @@ Since there is very little curvature, interaction is likely very small. However,
 \begin{flushleft}
 In terms of these means, $\mu_{(1)}, \mu_a, \mu_b$, and $\mu_{ab}$ are the overall mean,
 the effect of factor A, the effect of factor B, and the interaction effect respectively:\\
-
-$\mu_{(1)} = (\mu_{11} + \mu_{21} + \mu_{12} + \mu_{22}) / 4$,\\
-$\mu_a = (\mu_{21} + \mu_{22}) / 2 - (\mu_{11} + \mu_{12}) / 2$,\\
-$\mu_b = (\mu_{12} + \mu_{22}) / 2 - (\mu_{11} + \mu_{21}) / 2$,\\
-$\mu_{ab} = (mu_{11} + mu_{22}) / 2 - (mu_{21} + mu_{12}) / 2$.\\
 \end{flushleft}
+\begin{align*}
+    \mu_{(1)} &= \frac{(\mu_{11} + \mu_{21} + \mu_{12} + \mu_{22})}{4}\\
+    \mu_a &= \frac{(\mu_{21} + \mu_{22})}{2} - \frac{(\mu_{11} + \mu_{12})}{2}\\
+    \mu_b &= \frac{(\mu_{12} + \mu_{22})}{2}- \frac{(\mu_{11} + \mu_{21})}{2}\\
+    \mu_{ab} &= \frac{(mu_{11} + mu_{22})}{2} - \frac{(mu_{21} + mu_{12})}{2}
+\end{align*}
 \begin{flushleft}
 The intercept $\beta_0$ is the expected value of y when all factors are at their low level
 (i.e., $x_1 = x_2 = -1$), which corresponds to $\mu_{11}$.
@@ -465,16 +490,14 @@ in the regression model, which are non-zero when the factors are at their low le
 In other words, $\beta_0 = \mu_{11} + \beta_1 + \beta_2 + \beta_3$. \\
 \end{flushleft}
 \begin{flushleft}
-Expressing $\beta_1, \beta_2,$ and $\beta_3$ in terms of the factor-level means, we can substitute these expressions into the equation for $\beta_0$:\\
-$\beta_1 = \mu_a / 2$,\\
-$\beta_2 = \mu_b / 2$,\\
-$\beta_3 = \mu_{ab} / 2$.\\
-\end{flushleft}
-\begin{flushleft}
-Therefore, $\beta_0 = \mu_{11} + \mu_a / 2 + \mu_b / 2 + \mu_{ab} / 2$, which simplifies to:
+Expressing $\beta_1, \beta_2,$ and $\beta_3$ in terms of the factor-level means, we can substitute these expressions into the equation for $\beta_0$:
+$\beta_1 = \frac{\mu_a}{2}$, 
+$\beta_2 = \frac{\mu_b}{2}$, and 
+$\beta_3 = \frac{\mu_{ab}}{2}$.
 \end{flushleft}
 \begin{align*}
-    \beta_0 = \mu_{(1)} - \mu_{ab} / 2.
+    \beta_0 &= \mu_{11} + \frac{\mu_a}{2} + \frac{\mu_b}{2} + \frac{\mu_{ab}}{2}\\
+            &= \mu_{(1)} - \frac{\mu_{ab}}{2}
 \end{align*}
 
 
