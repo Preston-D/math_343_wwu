@@ -73,7 +73,31 @@ We are 95\% confident that the true main effect of tool geometry (B), is between
 \subsection*{e)}
 \subsection*{f)}
 
-
+\clearpage
 \section*{Question 2}
+First we note that the contrast vectors will have $2^5 = 32$ values.
+The last 16 elements of the contrast vectors for A,C,E are as follows
+\begin{equation*}
+    \vec{A} = \begin{bmatrix}\vdots \\ - \\ + \\ - \\ + \\ - \\ + \\ - \\ + \\ \vdots\end{bmatrix}
+    \text{, }
+    \vec{C} = \begin{bmatrix}\vdots \\ - \\ - \\ - \\ - \\ + \\ + \\ + \\ + \\ \vdots \end{bmatrix}
+    \text{, }
+    \vec{E} = \begin{bmatrix}\vdots \\ + \\ + \\ + \\ + \\ + \\ + \\ + \\ + \\ \vdots \end{bmatrix}
+\end{equation*}
+Note that $\vec{A}$ alternates between $-$ and $+$, every other.
+$\vec{C}$ alternates between $-$ and $+$, every 4.
+$\vec{E}$ alternates between $-$ and $+$, every 16.
+
+Thus, $\vec{AC} = \vec{A} \times \vec{C}$, is 
+\begin{equation*}
+    \vec{AC} = \begin{bmatrix}\vdots \\ + \\ - \\ + \\ - \\ - \\ + \\ - \\ + \\ \vdots \end{bmatrix}
+\end{equation*}
+
+Finally, the last 16 elements of $\vec{ACE}$ is
+\begin{equation*}
+    \vec{ACE} = \vec{AC} \times \vec{E} =
+    \begin{bmatrix}\vdots \\ + \\ - \\ + \\ - \\ - \\ + \\ - \\ + \\  + \\ - \\ + \\ - \\ - \\ + \\ - \\ + \end{bmatrix} \times \begin{bmatrix}\vdots \\ + \\ + \\ + \\ + \\ + \\ + \\ + \\ + \\ + \\ + \\ + \\ + \\ + \\ + \\ + \\ +  \end{bmatrix}
+    = \begin{bmatrix}\vdots \\ + \\ - \\ + \\ - \\ - \\ + \\ - \\ + \\  + \\ - \\ + \\ - \\ - \\ + \\ - \\ + \end{bmatrix}
+\end{equation*}
 
 \end{document}
