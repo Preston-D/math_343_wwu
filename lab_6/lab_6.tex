@@ -70,8 +70,46 @@ The following effects are significant (p-value $< \alpha = 0.05$), B, C, AC, and
 Thus, the confidence interval is $(0.916, 10.423)$
 We are 95\% confident that the true main effect of tool geometry (B), is between 0.916 and 10.423.
 \subsection*{d)}
+From the half normal plot of the standardized effects we can se that B, C, and AC are signiificant.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{./images/1_d_2.png}
+    \caption{Regression Equation from Minitab.}
+    \label{fig:3_b_2}
+\end{figure}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{./images/1_d_1.png}
+    \caption{Anova table from Minitab.}
+    \label{fig:3_b_2}
+\end{figure}
 \subsection*{e)}
+The values (df, SS, MS) for B, C and AC are the same in both ANOVA tables. The other effects have been added to the error values (df, SS, MS).
+More precisely, MSE for the ANOVA in d is:
+\begin{align*}
+    \text{MSE (part d)} = \text{MSE (part b) + \text{MSA} + \text{MSAB} + \text{MSBC} + \text{MSABC}}
+\end{align*}
+The degrees of freedom follow the same pattern:
+\begin{align*}
+    df_{error}\text{(part d)} = df_{error}\text{(part b)} + df_{A} + df_{AB} + df_{BC} + df_{ABC}
+\end{align*}
+\clearpage
 \subsection*{f)}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.6\textwidth]{./images/1_e_2.png}
+    \caption{Interaction Plot from Minitab.}
+    \label{fig:3_b_2}
+\end{figure}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.6\textwidth]{./images/1_e_1.png}
+    \caption{Main Effects Plot from Minitab.}
+    \label{fig:3_b_2}
+\end{figure}
+To maximize life hours I would select, A low, B high, C high.
+This is because B, and C high both have a significant positive effect on life hours so should be high.
+Therefore, A must be low due to the interaction of AC being significant.
 
 \clearpage
 \section*{Question 2}
