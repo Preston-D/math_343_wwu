@@ -98,16 +98,63 @@ Fitted $y_{ij}$ Values: $\hat{y}_{ij}=\bar{y}_{i \cdot} + \bar{y}_{\cdot j} - \b
     $H_a$: not all $(\tau \beta)_{ij}$ are the same. \\
     Reject $H_0$ if $F > F_{\alpha, (a-1)(b-1), N - ab}$, or p-value $< \alpha$. \\
     If $H_0$ is rejected, conclude that there exists interaction between Factors A and B at significance level $\alpha$.
-    \subsubsection*{Case 1: Interaction between A and B}
+    \subsubsection*{Case 1: No Interaction between A and B}
     \hrule width 8cm
     \vspace{6pt}
     It is meaningful to test for the significance of the main effect of A and the main effect of B. \\
     May combine the interaction sum of squares with the error sum of squares. \\
     \textbf{Anova: } \textbf{df: }$df_{error} = abn - a - b + 1$, \textbf{SSE: }$SSE` = SSAB + SSE$, \textbf{MSE: }$MSE` = \frac{SSE`}{abn - a - b + 1}$. \\
-    Note that F values must be updated with the new $MSE`$ before testing.
-    \subsubsection*{Case 2: No interaction between A and B}
+    Note that F values must be updated with the new $MSE`$ before testing. \\
+    \textbf{Tukeys C.I.:} For $\tau_i - \tau_{i`}$ (or $\beta$). Equivalent to FWE = $\alpha$ for hypothesis test. \\
+    \textbf{Factor A: }$\bar{y}_{i \cdot \cdot} - \bar{y}_{i` \cdot \cdot} \pm q_{\alpha, a, df_{error}} \sqrt{\frac{MSE}{bn}}$. 
+    \textbf{Factor B: }$\bar{y}_{\cdot j \cdot} - \bar{y}_{\cdot j` \cdot} \pm q_{\alpha, b, df_{error}} \sqrt{\frac{MSE}{an}}$\\
+    \textbf{Fisher's C.I.:} For $\tau_i - \tau_{i`}$ (or $\beta$). Equivalent to $\alpha$ for hypothesis test. \\
+    \textbf{Factor A: }$\bar{y}_{i \cdot \cdot} - \bar{y}_{i` \cdot \cdot} \pm t_{\alpha/2, df_{error}} \sqrt{\frac{2MSE}{bn}}$.
+    \textbf{Factor B: }$\bar{y}_{\cdot j \cdot} - \bar{y}_{\cdot j` \cdot} \pm t_{\alpha/2, df_{error}} \sqrt{\frac{2MSE}{an}}$\\
+    
+    \clearpage
+    \subsubsection*{Case 2: Interaction between A and B}
     \hrule width 8cm
     \vspace{6pt}
+    Not meaningful to test significance of main effect of A and B.
+    Treat each individual factor-level combonation of $i^{th}$ level of A,
+    and $j^{th}$ level of B, as a treatment. So there are $ab$ treatments.
+    Test every pair of treatments using Tukey's or Fisher's.
+    \textbf{Test:} $H_0$: $\mu_{11} = \mu_{12} = \cdots = \mu_{ab}$ using the F test for CRD. \\
+    \textbf{Tukey's C.I.: } $\bar{y}_{ij} - \bar{y}_{i` j`} \pm q_{\alpha, ab, abn - ab}\sqrt{\frac{MSE}{n}}$ \\
+    \textbf{Fisher's C.I.: } $\bar{y}_{ij} - \bar{y}_{i` j`} \pm t_{\alpha/2, abn - ab}\sqrt{\frac{2MSE}{n}}$ \\
+  
+    \subsection*{$2^k$ Factorial Design Using the $[-1 , +1]$ Notation}
+    \hrule width \textwidth
+    \vspace{6pt}
+    \begin{multicols}{2}
+      \begin{flushleft}
+        \textbf{2 Factor - ANOVA}
+        \begin{equation*}
+        \begin{array}{c|c|c|c|c|c|c|c}
+          \text{Std Order} & \text{A} & \text{B} & \text{AB} & \text{C} & \text{AC} & \text{BC} & \text{ABC} \\
+            \hline
+            (1) & - & - & + & - & + & + & - \\
+            a   & + & - & - & - & - & + & + \\
+            b   & - & + & - & - & + & - & + \\
+            ab  & + & + & + & - & - & - & - \\
+            c   & - & - & + & + & - & - & + \\
+            ac  & + & - & - & + & + & - & - \\
+            bc  & - & + & - & + & - & + & - \\
+            abc & + & + & + & + & + & + & + \\
+        \end{array}
+      \end{equation*}
+      \end{flushleft}
+    
+        \begin{flushright}
+          Note: $A \times B = AB$ and so on. \\
+          Factor interactions: There will be k main effects and $\binom{k}{2}$ two-factor interactions, $\binom{k}{3}$ three-factor interactions. \\
+          \textbf{Contrasts:} \\
+          Estimated main effect: $\frac{1}{2^{k-1}} \cdot \sum_{i=1}^{2^k} c_i \bar{y}_i$
+        \end{flushright}
+      \end{multicols}
+      \textbf{Model:}  Standard error: $se(\hat{\beta})= \sqrt{\frac{\sigma^2}{n2^k}} = \sqrt{\frac{MSE}{n2^k}}$. 
+      Confidence interval: $\hat{\beta} \pm t_{\alpha/2, df_{error}} \cdot se(\hat{\beta})$\\
   
   
-  \end{document}
+    \end{document}
