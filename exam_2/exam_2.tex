@@ -150,11 +150,29 @@ Fitted $y_{ij}$ Values: $\hat{y}_{ij}=\bar{y}_{i \cdot} + \bar{y}_{\cdot j} - \b
           Note: $A \times B = AB$ and so on. \\
           Factor interactions: There will be k main effects and $\binom{k}{2}$ two-factor interactions, $\binom{k}{3}$ three-factor interactions. \\
           \textbf{Contrasts:} \\
-          Estimated main effect: $\frac{1}{2^{k-1}} \cdot \sum_{i=1}^{2^k} c_i \bar{y}_i$
+          Estimated main effect: $\frac{1}{2^{k-1}} \cdot \sum_{i=1}^{2^k} c_i \bar{y}_i$ \\
+          Standard Error: $se(\hat{\text{Effect}}) = \sqrt{\frac{MSE}{n2^{k-2}}} = \frac{s}{\sqrt{n2^{k-2}}}$ \\
+          C.I.: $\hat{\text{Effect}} \pm t_{\alpha/2, df_{error}} \cdot se(\hat{\text{Effect}})$ \\
         \end{flushright}
       \end{multicols}
-      \textbf{Model:}  Standard error: $se(\hat{\beta})= \sqrt{\frac{\sigma^2}{n2^k}} = \sqrt{\frac{MSE}{n2^k}}$. 
-      Confidence interval: $\hat{\beta} \pm t_{\alpha/2, df_{error}} \cdot se(\hat{\beta})$\\
-  
-  
-    \end{document}
+    \textbf{Model:}  Standard error: $se(\hat{\beta})= \sqrt{\frac{\sigma^2}{n2^k}} = \sqrt{\frac{MSE}{n2^k}}$. 
+    Confidence interval: $\hat{\beta} \pm t_{\alpha/2, df_{error}} \cdot se(\hat{\beta})$\\
+    \textbf{Hypothesis Test: } $H_0$: True effect = x (usually 0). $H_a$: True effect $\neq$ $(< or >)$ x. \\
+    t test: $t = \frac{\hat{\text{Effect}} - x}{se(\hat{\text{Effect}})} = \frac{\sqrt{n2^{k-2}} \cdot (\hat{\text{Effect}})}{\sqrt{MSE}}$. 
+    Reject $H_0$ if $\left| t \right| > t_{\alpha/2, df_{error}}$ or p-value $< \alpha$. \\
+    F test: $F = t^2$. Reject if $F > F_{\alpha, 1, df_{error}}$ or p-value $< \alpha$. \\
+    Reject $H_0$, conclude that the main effect of {Effect} is significant. \\
+    \textbf{Sum of Squares:} $SS_{effect} = (n2^{k-2})(\hat{\text{Effect}})^2$. \\
+    \textbf{Notes on Anova: } \\
+    Main Effects: $\hat{A} = 2\hat{\tau}_2 = -2\hat{\tau}_1$. \\
+    From the Coefficients from Minitab: $\hat{\tau}_1$ is Coef, $se(\hat{\tau}_1)$ is SE Coef. \\
+    From the Coefficients from Minitab: $(\hat{\tau \beta \gamma})_{111}$ is Coef, $se((\hat{\tau \beta \gamma})_{111})$ is SE Coef. \\
+    From the Coded Coefficients from Minitab: $\hat{\tau}_2$ is Coef, $se(\hat{\tau}_2)$ is SE Coef. \\
+    From the Coded Coefficients from Minitab: $(\hat{\tau \beta \gamma})_{222}$ is Coef, $se((\hat{\tau \beta \gamma})_{222})$ is SE Coef. \\
+    
+    \textbf{For $2^2$ Design: } Sum of Squares of Effects: $SS_{contrast} = \frac{\left( \sum_{i=1}^{4} c_i \bar{y}_i \right)^2}{\frac{1}{n} \sum_{i=1}^{4}c_i^2}$. $SS_{effect} = n(\frac{1}{2} \sum_{i=1}^{4}c_i\bar{y}_i)^2 = n(\text{Main Effect})^2$.\\
+    
+    
+    
+    
+\end{document}
