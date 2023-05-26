@@ -1,0 +1,113 @@
+\documentclass[10pt]{article}
+\usepackage{titling}
+\usepackage{lipsum}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{multicol}
+\usepackage{pgfplots}
+\usepackage[margin=0.5in]{geometry}
+
+\pagestyle{empty}
+% Friday, May 26
+% covers Chapters 4, 5 and Sections 6.1 through 6.4, limited to the parts and sections covered in class
+% closed book and notes
+% you may bring two formula sheets - two 8.5x11' pieces of paper with notes on both sides allowed
+% statistical tables will be provided
+% practice problem set posted
+% some review on Thursday
+\begin{document}
+\subsection*{Randomized Complete Block Design (RCBD)}
+\hrule width \textwidth
+\vspace{6pt}
+$y_{ij} = \mu + \tau_i + \beta_j +\epsilon_{ij}$, Where $i = $\# of treatments, $j = $\# of blocks. ($\mu$ Grand Mean), ($\tau$ Treatment effect), ($\beta$ Block effect). \\
+Constraint: $\sum \tau_i = 0$, $\sum \beta_j = 0$. \\
+Estimates: Grand Mean: $\hat{\mu} = \bar{y}_{\cdot \cdot}$, Treatment Effect: $\hat{\tau}_i = \bar{y}_{i \cdot} - \bar{y}_{\cdot \cdot}$, Block Effect: $\hat{\beta}_i = \bar{y}_{\cdot j} - \bar{y}_{\cdot \cdot}$\\
+Grand Smaple Average: $\bar{y}_{\cdot \cdot} = \frac{1}{ab}\sum_{i=1}^{a} \sum_{j=1}^{b} y_{ij}$\\
+Sample Mean for $i^{th}$ Treatment (averaged over all blocks): $\bar{y}_{i \cdot} = \frac{1}{b} \sum_{j=1}^{b} y_{ij}$\\
+Sample Mean for $j^{th}$ Block (averaged over all treatments): $\bar{y}_{\cdot j} = \frac{1}{a} \sum_{i=1}^{a} y_{ij}$\\
+Fitted $y_{ij}$ Values: $\hat{y}_{ij}=\bar{y}_{i \cdot} + \bar{y}_{\cdot j} - \bar{y}_{\cdot \cdot}$
+\begin{multicols}{2}
+  \begin{flushleft}
+    \textbf{RCBD - ANOVA}
+    \begin{equation*}
+    \begin{array}{c|c|c|c|c}
+      \text{Source} & \text{df} & \text{SS} & \text{MS} & \text{F}\\
+        \hline
+        \text{Treatments} & a - 1 & SSTr & MSTr = \frac{SSTr}{a-1} & F= \frac{MSTr}{MSE}\\
+        \text{Blocks} & b - 1 & SSB & MSB = \frac{SSB}{b-1} & F= \frac{MSB}{MSE}\\
+        \text{Error} & (a-1)(b-1) & SSE & MSE = \frac{SSE}{(a-1)(b-1)} & \\
+        \hline
+        \text{Total} & ab - 1 & SST & &\\
+    \end{array}
+  \end{equation*}
+  \end{flushleft}
+
+    \begin{flushright}
+      Pooled sample variance(est. $\sigma^2$): $s^2 = MSE$. \\
+      Test of Homogeneity of Treatment Effects: \\
+      $H_0$: $\tau_1 = \tau_2 = \cdots = \tau_a = 0$. \\
+      $H_a$: not all $\tau_i = 0$. \\
+      Reject $H_0$ if $F > F_{\alpha, a-1, (a-1)(b-1)}$, or p-value $< \alpha$. \\
+    \end{flushright}
+  \end{multicols}
+  \textbf{C.I for $\mu_i$:} $\bar{y}_{i \cdot} \pm t_{\alpha/2, df_{error}} \frac{s}{\sqrt{b}}$ \\
+  \textbf{Fisher's LSD Multiple Comparison Test:} Treatment $i$ and $j$ are significantly different if$\left| \bar{y}_{i \cdot} - \bar{y}_{j \cdot} \right| > t_{\alpha/2, df_{error}} s \sqrt{\frac{2}{b}}$. (Reject $H_0: \tau_i = \tau_j$).
+  \textbf{Fishers C.I.:}For all possible treatment differences, $\bar{y}_{i \cdot} - \bar{y}_{k \cdot} \pm t_{\alpha/2, df_{error}} s \sqrt{\frac{2}{b}}$. \\
+  \textbf{Tukey's Multiple Comparison Test:} Treatment $i$ and $j$ are significantly different if $\left| \bar{y}_{i \cdot} - \bar{y}_{j \cdot} \right| > q_{\alpha, a, df_{error}} \frac{s}{\sqrt{b}}$.\\
+  \textbf{Tukey's C.I.:}For all possible treatment differences, $\bar{y}_{i \cdot} - \bar{y}_{k \cdot} \pm q_{\alpha, a, df_{error}} \frac{s}{\sqrt{b}}$.
+  
+  \subsection*{Two Factor Design}
+  \hrule width \textwidth
+  \vspace{6pt}
+  $y_{ijk} = \mu + \tau_i + \beta_j + (\tau \beta)_{ij} + \epsilon_{ijk}$. 
+  Constraint: $\sum \tau_i = 0$, $\sum \beta_j = 0$, and $\sum (\tau \beta)_{ij} = 0$ (for each fixed i,j). \\
+  \textbf{Interaction: } if $(\tau \beta)_{ij} = 0$ for every i,j then there is no interaction between factors A and B.\\
+  \textbf{Estimates: } $\bar{y}_{\cdot \cdot \cdot} = \frac{1}{abn}\sum_{i=1}^{a} \sum_{j=1}^{b} \sum_{k=1}^{n} y_{ijk}$.
+  $\bar{y}_{i \cdot \cdot} = \frac{1}{bn} \sum_{j=1}^{b} \sum_{k=1}^{n} y_{ijk}$.
+  $\bar{y}_{\cdot j \cdot} = \frac{1}{an}\sum_{i=1}^{a} \sum_{k=1}^{n} y_{ijk}$. \\
+  \textbf{Fitted Values: } $\hat{y}_{ijk} = \hat{\mu} + \hat{\tau}_i + \hat{\beta}_j + (\hat{\tau \beta})_{ij} = \bar{y}_{i j \cdot}$
+  \begin{multicols}{2}
+    \begin{flushleft}
+      \textbf{2 Factor - ANOVA}
+      \begin{equation*}
+      \begin{array}{c|c|c|c|c}
+        \text{Source} & \text{df} & \text{SS} & \text{MS} & \text{F}\\
+          \hline
+          \text{Factor A} & a - 1 & SSA & MSA = \frac{SSA}{a-1} & F= \frac{MSA}{MSE}\\
+          \text{Factor B} & b - 1 & SSB & MSB = \frac{SSB}{b-1} & F= \frac{MSB}{MSE}\\
+          \text{AB Interaction} & (a-1)(b-1) & SSAB & MSAB = \frac{SSAB}{(a-1)(b-1)} & F= \frac{MSAB}{MSE}\\
+          \text{Error} & N - ab & SSE & MSE = \frac{SSE}{N - ab} & \\
+          \hline
+          \text{Total} & N -1 & SST & &\\
+      \end{array}
+    \end{equation*}
+    \end{flushleft}
+  
+      \begin{flushright}
+        Note: $N = abn$ \\
+        If $n = 1$ assume no interaction. \\
+        Test of significance of \\ AB Interaction should be done first. \\
+        If there is interaction it is not usesful\\
+        to test for significance of A and B.\\
+      \end{flushright}
+    \end{multicols}
+    \textbf{Test of Significance of AB Interaction: }
+    $H_0$: $(\tau \beta)_{11} = (\tau \beta)_{12} = \cdots = (\tau \beta)_{ab} = 0$.
+    $H_a$: not all $(\tau \beta)_{ij}$ are the same. \\
+    Reject $H_0$ if $F > F_{\alpha, (a-1)(b-1), N - ab}$, or p-value $< \alpha$. \\
+    If $H_0$ is rejected, conclude that there exists interaction between Factors A and B at significance level $\alpha$.
+    \subsubsection*{Case 1: Interaction between A and B}
+    \hrule width 8cm
+    \vspace{6pt}
+    It is meaningful to test for the significance of the main effect of A and the main effect of B. \\
+    May combine the interaction sum of squares with the error sum of squares. \\
+    \textbf{Anova: } \textbf{df: }$df_{error} = abn - a - b + 1$, \textbf{SSE: }$SSE` = SSAB + SSE$, \textbf{MSE: }$MSE` = \frac{SSE`}{abn - a - b + 1}$. \\
+    Note that F values must be updated with the new $MSE`$ before testing.
+    \subsubsection*{Case 2: No interaction between A and B}
+    \hrule width 8cm
+    \vspace{6pt}
+  
+  
+  \end{document}
