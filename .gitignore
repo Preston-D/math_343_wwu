@@ -13,3 +13,7 @@ aa_resources/Chapter 5_text.pdf
 aa_resources/HW4.pdf
 aa_resources/HypothesisTestingReview.pdf
 tex_cleanup
+project/Bible.txt
+project/pride_and_prejudice.txt
+*.txt
+*.class
