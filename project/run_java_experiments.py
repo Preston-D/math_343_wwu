@@ -1,6 +1,7 @@
 import subprocess
 import csv
 import sys
+from tqdm import tqdm
 
 def main(replicants):
     # Define the mapping of parameters
@@ -29,10 +30,13 @@ def main(replicants):
 
         writer.writeheader()
 
+        total = len(combinations) * replicants
+        pbar = tqdm(total=total, ncols=120)
+
         # For each combination of parameters...
         for combination in combinations:
             # Repeat the experiment the desired number of times
-            for _ in range(replicants):
+            for i in range(replicants):
                 # Prepare the arguments for the Java program
                 args = ['java', 'WordFrequencyCounter.java']
                 args += [parameters[fieldnames[i]][combination[i]] for i in range(len(combination))]
@@ -51,6 +55,10 @@ def main(replicants):
                     'Input File': combination[2],
                     'Seconds': time
                 })
+
+                pbar.set_description(f"Running {i+1}/{replicants} replicants for combination {combination}")
+                pbar.update()
+        pbar.close()
 
 if __name__ == "__main__":
     main(int(sys.argv[1]))
