@@ -52,6 +52,10 @@
 % 3. How to interpret Interaction Plots.
 %
 \clearpage
+% \section*{Table of Contents}
+% \textbf{1. I}
+\tableofcontents
+\clearpage
 \section{Introduction}
   The purpose of this experiment is to test the performance of a
   word counting program in Java\footnote{See Java Code in the Appendix.}.
@@ -98,7 +102,7 @@
     This is a test for the ability of the word frequency count program
     This is a test
   \end{lstlisting}
-
+\clearpage
   \begin{lstlisting}[language=Python, 
     basicstyle=\ttfamily\scriptsize, 
     numbers=none, 
@@ -125,7 +129,7 @@
   From these listing we can see that the the program ran with a buffer size of 16,
   using the "sorting" algorithm, on test.txt. The final argument "false",
   indicates whether or not the program should run in silent mode and not print the results.
-  Finally we see that the program took \texttt{0.0070} seconds to run in total.
+  Finally, we see that the program took \texttt{0.0070} seconds to run in total.
 
   The WordFrequencyCounter.java program was run multiple times with the help of a Python program\footnote{See Python Code in the Appendix.}.
   The program run\_java\_experiments.py takes as input the number of replicants $n$.
@@ -166,6 +170,23 @@
   Statisical analysis was performed with Minitab.
   The objective of the analysis was to determine what factors were
   significant in affecting the runtime in seconds of the computer program.
+  The analysis will be performed in 5 steps:
+  % 1. Estimate factor effects
+% 2. Form initial model
+%   a. If the design is replicated, fit the full model
+%   b. If there is no replication, form the model
+%      using a normal probability plot of the effects
+% 3. Perform statistical testing
+% 4. Refine model
+% 5. Analyze residuals
+% 6. Interpret results
+  \begin{enumerate}
+    \item Estimate factor effects
+    \item Form initial model
+    \item Perform statistical testing
+    \item Analyze residuals
+    \item Interpret results
+  \end{enumerate}
   % x Anova Table
   % x Determine significant effects
   % x Give values of main and interaction effects
@@ -182,7 +203,7 @@
                                 &= \frac{1}{4} \left( -0.77175 + 0.76509 - 0.55811 + 0.50524 - 0.23177 + 0.22599 - 0.14187 + 0.11824\right) \\ 
                                 &= -0.022235
   \end{align*}
-  Continuing using the contrast constants for a $2^3$ factorial design yeilds the following table.
+  Continuing using the contrast constants for a $2^3$ factorial design yields the following table.
   \begin{equation*}
     \begin{array}{c|c}
         \text{Effect} & \text{Estimated Main/Interaction Effect} \\
@@ -198,7 +219,7 @@
     
     \end{array}
     \end{equation*}\\
-
+\clearpage
 \subsection{Regression Model}
   Regression models for $2^3$ factorial designs can be described as follows.
   \begin{align*}
@@ -206,7 +227,7 @@
   \end{align*}
   Where the coded variables $x_1$, $x_2$, and $x_3$ represent A, B, and C, respectively.
   The $x_1 x_2$ term is the AB interaction, and so on for the interaction terms AB through ABC.
-  We can utilize the main and interaction effects found in section \textbf{XXX} to estimate the $\beta$ parameters.
+  We can utilize the main and interaction effects found in section 2.1 to estimate the $\beta$ parameters.
   \begin{align*}
     \hat{\beta}_1 &= \frac{\text{Main Effect of A}}{2} \\
                   &= \frac{-0.022235}{2} \\
@@ -218,7 +239,7 @@
     E(y) = 0.41475 + -0.01111 x_1 + -0.08389 x_2 + -0.008 x_1 x_2 + 0.23529 x_3 + 0.00376 x_1 x_3 + 0.03448 x_2 x_3 + 0.00354 x_1 x_2 x_3
   \end{align*}
 
-\clearpage
+
 \subsection{Anova Analysis of Significant Effects}
   \begin{figure}[h] % TABLE FIGURE
     \centering
@@ -232,22 +253,22 @@
     $H_0$: True Effect $= 0$.\\
     $H_a$: True Effect $\neq 0$.\\
   \end{flushleft}
-  Using the p-value from the ANOVA table, we can construct a table indicating whether or not a main or interaction effect is significant. \\
-  \begin{equation*}
-    \begin{array}{c|c}
-        \text{Effect} & \text{Significant at }\alpha = 0.05 \text{?} \\
-        \hline
-        \text{A}   & Yes \\
-        \text{B}   & Yes \\
-        \text{C}   & Yes \\
-        \text{AB}  & Yes \\
-        \text{AC}  & Yes \\
-        \text{BC}  & Yes \\
-        \text{ABC} & Yes 
-    \end{array}
-    \end{equation*}
+  % Using the p-value from the ANOVA table, we can construct a table indicating whether or not a main or interaction effect is significant. \\
+  % \begin{equation*}
+  %   \begin{array}{c|c}
+  %       \text{Effect} & \text{Significant at }\alpha = 0.05 \text{?} \\
+  %       \hline
+  %       \text{A}   & Yes \\
+  %       \text{B}   & Yes \\
+  %       \text{C}   & Yes \\
+  %       \text{AB}  & Yes \\
+  %       \text{AC}  & Yes \\
+  %       \text{BC}  & Yes \\
+  %       \text{ABC} & Yes 
+  %   \end{array}
+  %   \end{equation*}
     \begin{flushleft}
-      Therefore we can conclude that the interaction effects AB, AC, BC, and ABC, as well as the main effects A, B, and C, are significant at $\alpha = 0.05$.
+      Using the p-values from the ANOVA table, we can conclude that the interaction effects AB, AC, BC, and ABC, as well as the main effects A, B, and C, are significant at $\alpha = 0.05$.
       Since each Factor is significant, we will not remove any factors from the model as it is already refined.
     \end{flushleft}
 
@@ -277,28 +298,28 @@
   With A having the smallest effect, B having more of an effect, and C having the largest negative effect.
 \clearpage
 \section{Residual Analysis}
-% Residual plot
-\begin{figure}[h] % IMAGE FIGURE
-  \centering
-  \includegraphics[width=0.7\textwidth]{./images/residuals.png}
-  \caption{Residual Plot from Minitab.}
-  \label{fig:interaction}
-\end{figure}
-The residuals show heteroskedasticity, or non-constant variance.
-This indicates that the model assumtions are not satisfied in the current model. \\
+  % Residual plot
+  \begin{figure}[h] % IMAGE FIGURE
+    \centering
+    \includegraphics[width=0.7\textwidth]{./images/residuals.png}
+    \caption{Residual Plot from Minitab.}
+    \label{fig:interaction}
+  \end{figure}
+  The residuals show heteroskedasticity, or non-constant variance.
+  This indicates that the model assumtions are not satisfied in the current model. \\
 
-% Normality test
-\begin{figure}[h] % IMAGE FIGURE
-  \centering
-  \includegraphics[width=0.7\textwidth]{./images/normal.png}
-  \caption{Normal Probability Plot from Minitab.}
-  \label{fig:interaction}
-\end{figure}
+  % Normality test
+  \begin{figure}[h] % IMAGE FIGURE
+    \centering
+    \includegraphics[width=0.7\textwidth]{./images/normal.png}
+    \caption{Normal Probability Plot from Minitab.}
+    \label{fig:interaction}
+  \end{figure}
 
-Furthermore, the normal probability plot indicates that the data does not come from a normal distribution.
-Using the P-value from the Anderson-Darling normality test we can conclude that there is enough statistical evidence to support that the data are not drawn from a normal distribution.
+  Furthermore, the normal probability plot indicates that the data does not come from a normal distribution.
+  Using the P-value from the Anderson-Darling normality test we can conclude that there is enough statistical evidence to support that the data are not drawn from a normal distribution.
 
-This together with the residuals show that the model assumtions are not satisfied in the current model.
+  This together with the residuals show that the model assumtions are not satisfied in the current model.
 
 \clearpage
 \section{Transformed Model}
@@ -310,22 +331,127 @@ The transformed response $y'$ is:
   y' = ln(\text{Seconds})
 \end{align*}
 
+\subsection{Factor Effects}
 % 1. Estimate factor effects
-% 2. Form initial model
-%   a. If the design is replicated, fit the full model
-%   b. If there is no replication, form the model
-%      using a normal probability plot of the effects
-% 3. Perform statistical testing
-% 4. Refine model
-% 5. Analyze residuals
-% 6. Interpret results 
+\begin{figure}[h] % IMAGE FIGURE
+  \centering
+  \includegraphics[width=0.7\textwidth]{./images/transformed/cube.png}
+  \caption{Cube Plot from Minitab.}
+  \label{fig:interaction}
+\end{figure}
+The Cube plot in figure 7 shows the new means for the transformed $y'$ for each Factor (A) Buffer Size, (B) Algorithm, and (C) Input File, at each of the corresponding high and low levels.
 
+We can then estimate the Main and interaction Effects using contrast vectors. This results in the following table.
+\begin{equation*}
+  \begin{array}{c|c}
+      \text{Effect} & \text{Estimated Main/Interaction Effect} \\
+      \hline
+      \text{I}   & -2.22116 \\
+      \text{A}   & -0.07821 \\
+      \text{B}   & -0.47318 \\
+      \text{C}   & 1.30986 \\
+      \text{AB}  & -0.05815 \\
+      \text{AC}  & -0.02415 \\
+      \text{BC}  & -0.10219 \\
+      \text{ABC} & -0.01751 \\
+  
+  \end{array}
+  \end{equation*}\\
+\subsection{Regression Model}
+  % 2. Form initial model
+  Using the new Main and Interaction Effects, the new model is:
+  \begin{align*}
+    E(y') = -1.11058  -0.039105 x_1 -0.23659 x_2 -0.02907 x_1 x_2 + 0.65493 x_3 -0.01207 x_1 x_3 -0.05109 x_2 x_3 -0.00875 x_1 x_2 x_3
+  \end{align*}
 \clearpage
+% 3. Perform statistical testing
+\subsection{Anova Analysis of Significant Effects}
+  \begin{figure}[h] % TABLE FIGURE
+    \centering
+    \includegraphics[width=0.5\textwidth]{./images/transformed/anova.png}
+    \caption{ANOVA table from Minitab.}
+    \label{fig:anova}
+  \end{figure}
+  Since each P-value $< \alpha$, we can conclude that the interaction effects AB, AC, BC, and ABC, as well as the main effects A, B, and C, are significant at $\alpha = 0.05$.
+  Since each Factor is significant, we will not remove any factors from the model as it is already refined.
+% 4. Refine model
+\subsection{Interaction and Main Effect Analysis}
+\begin{figure}[h]
+  \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+      \includegraphics[width=1\textwidth]{./images/transformed/main.png}
+      \caption{Main Effects Plot from Minitab.}
+    \label{fig:img1}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.45\textwidth}
+      \includegraphics[width=1\textwidth]{./images/transformed/interaction.png}
+      \caption{Interaction Plot from Minitab.}
+    \label{fig:img2}
+  \end{subfigure}
+  \label{fig:both}
+\end{figure}
+We can observe that there does exist slight non-parallelity between the lines in the plot.
+This slight non-parallelity is indicative of interaction between the terms.
+
+The main effects plot shows each of the terms having a negative effect on the response.
+With A having the smallest effect, B having more of an effect, and C having the largest negative effect.
+\clearpage
+% 5. Analyze residuals
+\subsection{Residual Analysis}
+  % Residual plot
+  \begin{figure}[h] % IMAGE FIGURE
+    \centering
+    \includegraphics[width=0.7\textwidth]{./images/transformed/four_in_one.png}
+    \caption{Four in One Plot from Minitab.}
+    \label{fig:interaction}
+  \end{figure}
+  The residuals no longer show heteroskedasticity, or non-constant variance.
+  This indicates that the model assumtions are satisfied in the transformed model. 
+
+  The normal probability plot is a better fit than the untransofrmed model, as it appears to follow a straight line.
+  However, using the P-value from the Anderson-Darling normality test we can conclude that there is enough statistical evidence to support that the data are not drawn from a normal distribution. 
+
+  To counter this non-normality we will use hypothesis tests and confidence intervals that are robust to non-normality in the following analysis.
+  Since the residuals appear to be randomly scattered, we can proceed as though the residuals are normally distributed.
+
+% 6. Interpret results 
+\clearpage
+\section{Interpretation of the Results}
+\subsection{Optimal Factor-Level Combination}
+Using the statistical analysis we can find the factor-level combination that gives the optimal mean response.
+Note that the optimal mean response would be the lowest value in seconds as we want our program to run fast.
+
+To do this we can refer back to Figure 1, in Section 1, the Cube Plot.
+The Cube Plot shows that the mean response is lowest at the factors $A^{+}$, $B^{+}$, and $C^{+}$.
+Equivalently, the program is the fastest when Buffer Size is 4096, Algorithm is Hash Map, and Input File is pride\_and\_prejudice.txt.
+
+\subsection{Confidence Interval for the True Mean Response}
+\begin{figure}[h] % IMAGE FIGURE
+  \centering
+  \includegraphics[width=0.5\textwidth]{./images/transformed/conf.png}
+  \caption{Prediction for y' from Minitab.}
+  \label{fig:interaction}
+\end{figure}
+Figure 11 shows the prediction and 95\% confidence interval for the transformed model at $A^{+}$, $B^{+}$, and $C^{+}$.
+In order to interpret these results we must use the untransform the predicted values using the inverse of the natural log, $e^x$.
+
+Thus the untransformed confidence interval is $(0.11655, 0.11823)$, that is,
+we are 95\% confident that the true mean response when Buffer Size is 4096, Algorithm is Hash Map, and Input File is pride\_and\_prejudice.txt,
+is between 0.11655, and 0.11823 seconds.
+
+
 \section{Conclusion}
 % What did we learn
-% Suprising results
-% Any modifications if I could redo?
+What I learned is that even though the interaction plots are nearly parallel, since $n$ was so large, even slight non-parallelity indicated interaction.
+This was also a surprising result, as initially, when I did a hypothesis test on the interaction effects, I predicted the interaction plots to intersect, or at least be more non-parallel than they were.
 
+% Suprising results
+One surprising result was that all the interaction terms were significant. When I initially ran the experiment I anticipated that the Main effects would be significant, but the interaction effects would not. This was not the case and was an interesting result.
+
+Another surprising result is how difficult it was to try to get the residuals normally distributed. I performed a Box-Cox transformation in order to find the best transformation was the natural log, however even after the transformation the data was not normally distributed.
+
+% Any modifications if I could redo?
+One modifications I might make to the expereiment in a future trial would be to find a way to implement threading. In my opinion this would be a more interesting factor that file size, as large files take longer to process is not a particularly interesting conclusion. Writing the code for the threading became quite complicated, and since it was not required in the scope of the project, I decided to scrap the idea. The input text file was a simple factor I could include to keep the experiment a $2^3$ design.
 
 \clearpage
 \appendix
